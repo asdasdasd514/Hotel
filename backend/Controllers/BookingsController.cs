@@ -1,0 +1,868 @@
+using AutoMapper;
+using backend.Common;
+using backend.Data;
+using backend.DTOs;
+using backend.Models;
+using backend.Security;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace backend.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Tags("Bookings")]
+    public class BookingsController : ControllerBase
+    {
+        private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
+        private const int VietnamUtcOffsetHours = 7;
+
+        public BookingsController(AppDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        private static string ResolveBookingStatusFromDetails(IEnumerable<BookingDetail> details)
+        {
+            var detailList = details.ToList();
+            if (!detailList.Any()) return "Pending";
+
+            if (detailList.All(detail => detail.Status == "Completed")) return "Completed";
+            if (detailList.All(detail => detail.Status == "Cancelled")) return "Cancelled";
+            
+            if (detailList.Any(detail => detail.Status == "CheckedIn")) return "CheckedIn";
+            if (detailList.Any(detail => detail.Status == "Confirmed")) return "Confirmed";
+            if (detailList.Any(detail => detail.Status == "Paying")) return "Paying";
+
+            return "Pending";
+        }
+
+        private static string GenerateBookingCode(string? guestPhone, DateTime timestamp)
+        {
+            var digitsOnly = new string((guestPhone ?? string.Empty).Where(char.IsDigit).ToArray());
+            var phoneSuffix = digitsOnly.Length >= 3
+                ? digitsOnly[^3..]
+                : digitsOnly.PadLeft(3, '0');
+
+            return $"BK-{timestamp:yyyyMMddHHmm}{phoneSuffix}";
+        }
+
+        private static DateTime NormalizeCheckInDate(DateTime value)
+        {
+            return value.TimeOfDay == TimeSpan.Zero
+                ? value.Date.AddHours(14)
+                : value;
+        }
+
+        private static DateTime NormalizeCheckOutDate(DateTime value)
+        {
+            return value.TimeOfDay == TimeSpan.Zero
+                ? value.Date.AddHours(12)
+                : value;
+        }
+
+        private async Task ApplyInvoicePaymentStatusesAsync(IEnumerable<Booking> bookings)
+        {
+            var bookingList = bookings.Where(booking => booking != null).ToList();
+            if (!bookingList.Any())
+            {
+                return;
+            }
+
+            var detailIds = bookingList
+                .SelectMany(booking => booking.BookingDetails ?? Enumerable.Empty<BookingDetail>())
+                .Select(detail => detail.Id)
+                .Where(id => id > 0)
+                .Distinct()
+                .ToList();
+
+            if (!detailIds.Any())
+            {
+                return;
+            }
+
+            var payingDetailIds = await _context.Invoices
+                .AsNoTracking()
+                .Where(invoice =>
+                    invoice.BookingDetailId.HasValue &&
+                    detailIds.Contains(invoice.BookingDetailId.Value) &&
+                    invoice.Status == "Paying")
+                .Select(invoice => invoice.BookingDetailId!.Value)
+                .Distinct()
+                .ToListAsync();
+
+            if (!payingDetailIds.Any())
+            {
+                return;
+            }
+
+            var payingDetailIdSet = payingDetailIds.ToHashSet();
+
+            foreach (var booking in bookingList)
+            {
+                foreach (var detail in booking.BookingDetails.Where(detail => payingDetailIdSet.Contains(detail.Id)))
+                {
+                    if (!string.Equals(detail.Status, "Completed", StringComparison.OrdinalIgnoreCase))
+                    {
+                        detail.Status = "Paying";
+                    }
+                }
+
+                booking.Status = ResolveBookingStatusFromDetails(booking.BookingDetails);
+            }
+        }
+
+        // Tự động hủy các Pending booking đã hết thời gian giữ phòng (>10 phút)
+        private async Task CancelExpiredPendingBookingsAsync()
+        {
+            var cutoff = DateTime.Now.AddMinutes(-10);
+
+            var expiredBookings = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                .Where(b =>
+                    b.Status == "Pending" &&
+                    b.CreatedAt < cutoff &&
+                    b.BookingDetails.Any(bd => bd.Status == "Pending"))
+                .ToListAsync();
+
+            if (!expiredBookings.Any()) return;
+
+            foreach (var booking in expiredBookings)
+            {
+                foreach (var detail in booking.BookingDetails.Where(bd => bd.Status == "Pending"))
+                {
+                    detail.Status = "Cancelled";
+                }
+                booking.Status = "Cancelled";
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+        // GET: api/Bookings
+        [HttpGet]
+        [Permission("VIEW_BOOKINGS", "VIEW_DASHBOARD")]
+        public async Task<ActionResult<PagedResponse<BookingResponseDTO>>> GetBookings(
+        [FromQuery] string? search = null,
+        [FromQuery] string? status = null,
+        [FromQuery] string? roomTypeId = null,      // Lọc theo loại phòng
+        [FromQuery] DateTime? checkInFrom = null,   // Lọc theo ngày check-in từ
+        [FromQuery] DateTime? checkInTo = null,     // Lọc theo ngày check-in đến
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10)
+        {
+            var query = _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.RoomType)
+                .AsNoTracking();
+
+            // 1. Tìm kiếm (BookingCode, Tên khách, Số phòng)
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var normalized = search.Trim().ToLower();
+                query = query.Where(b =>
+                    b.BookingCode.ToLower().Contains(normalized) ||
+                    (b.Guest != null && b.Guest.Name != null && b.Guest.Name.ToLower().Contains(normalized)) ||
+                    b.BookingDetails.Any(bd => bd.Room != null &&
+                        bd.Room.RoomNumber.ToLower().Contains(normalized)));
+            }
+
+            // 2. Lọc theo Status
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                query = query.Where(b => b.Status == status);
+            }
+
+            // 3. Lọc theo Loại phòng (RoomTypeId)
+            if (!string.IsNullOrWhiteSpace(roomTypeId) && int.TryParse(roomTypeId, out int rtId))
+            {
+                query = query.Where(b => b.BookingDetails.Any(bd => bd.RoomTypeId == rtId));
+            }
+
+            // 4. Lọc theo ngày Check-in
+            if (checkInFrom.HasValue)
+            {
+                var fromDate = checkInFrom.Value.Date;
+                query = query.Where(b => b.BookingDetails.Any(bd => bd.CheckInDate.Date >= fromDate));
+            }
+
+            if (checkInTo.HasValue)
+            {
+                var toDate = checkInTo.Value.Date;
+                query = query.Where(b => b.BookingDetails.Any(bd => bd.CheckInDate.Date <= toDate));
+            }
+
+            // Đếm tổng số bản ghi
+            var totalCount = await query.CountAsync();
+
+            // Lấy dữ liệu + phân trang (giữ nguyên OrderByDescending(b => b.Id) như code gốc)
+            var bookings = await query
+                .OrderByDescending(b => b.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            await ApplyInvoicePaymentStatusesAsync(bookings);
+
+            var dtos = _mapper.Map<List<BookingResponseDTO>>(bookings);
+
+            return Ok(new PagedResponse<BookingResponseDTO>(dtos, totalCount, page, pageSize));
+        }
+
+        // GET: api/Bookings/{id}
+        [HttpGet("{id:int}")]
+        [Permission("VIEW_BOOKINGS")]
+        public async Task<ActionResult<BookingResponseDTO>> GetBooking(int id)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.User)
+                    .ThenInclude(u => u.Membership)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.RoomType)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null) return NotFound();
+
+            // Auto-link any unassigned LossAndDamage records for the rooms in this booking
+            var roomIds = booking.BookingDetails.Where(bd => bd.RoomId.HasValue).Select(bd => bd.RoomId!.Value).ToList();
+            if (roomIds.Any())
+            {
+                var unassignedIssues = await _context.LossAndDamages
+                    .Include(issue => issue.RoomInventory)
+                    .Where(issue => issue.BookingDetailId == null &&
+                                     issue.RoomInventory != null &&
+                                     issue.RoomInventory.RoomId.HasValue &&
+                                     roomIds.Contains(issue.RoomInventory.RoomId.Value))
+                    .ToListAsync();
+
+                if (unassignedIssues.Any())
+                {
+                    bool updated = false;
+                    foreach (var issue in unassignedIssues)
+                    {
+                        var matchingDetail = booking.BookingDetails
+                            .FirstOrDefault(bd => bd.RoomId == issue.RoomInventory!.RoomId);
+                        if (matchingDetail != null)
+                        {
+                            issue.BookingDetailId = matchingDetail.Id;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                }
+            }
+
+            await ApplyInvoicePaymentStatusesAsync(new[] { booking });
+
+            return Ok(_mapper.Map<BookingResponseDTO>(booking));
+        }
+
+        // POST: api/Bookings - Tạo booking mới
+        [HttpPost]
+        [Permission("CREATE_BOOKINGS")]
+        public async Task<ActionResult<BookingResponseDTO>> CreateBooking([FromBody] BookingCreateDTO dto)
+        {
+            if (dto.BookingDetails == null || !dto.BookingDetails.Any())
+                return BadRequest("Phải có ít nhất một chi tiết phòng.");
+
+            // ====================== XỬ LÝ GUEST - TẠO MỚI NẾU CHƯA CÓ ======================
+            int guestId;
+
+            // Trường hợp 1: Client truyền GuestId rõ ràng
+            if (dto.GuestId.HasValue && dto.GuestId.Value > 0)
+            {
+                var existingGuest = await _context.Guests
+                    .AnyAsync(g => g.Id == dto.GuestId.Value);
+
+                if (!existingGuest)
+                    return BadRequest($"Khách hàng ID {dto.GuestId.Value} không tồn tại.");
+
+                guestId = dto.GuestId.Value;
+            }
+            else
+            {
+                // Trường hợp 2: Không truyền GuestId -> Kiểm tra GuestPhone đã tồn tại hay không
+                if (string.IsNullOrWhiteSpace(dto.GuestName))
+                    return BadRequest("Tên khách hàng là bắt buộc khi tạo khách mới (GuestName).");
+
+                var existingGuest = await _context.Guests
+                    .FirstOrDefaultAsync(g => g.Phone == dto.GuestPhone);
+
+                if (existingGuest != null)
+                {
+                    guestId = existingGuest.Id;
+                }
+                else
+                {
+                    var newGuest = new Guest
+                    {
+                        Name = dto.GuestName.Trim(),
+                        Phone = string.IsNullOrWhiteSpace(dto.GuestPhone) ? null : dto.GuestPhone.Trim(),
+                        Email = string.IsNullOrWhiteSpace(dto.GuestEmail) ? null : dto.GuestEmail.Trim()
+                    };
+
+                    _context.Guests.Add(newGuest);
+                    await _context.SaveChangesAsync();        // ← Save để lấy ID
+
+                    guestId = newGuest.Id;
+                }
+            }
+
+            if (dto.VoucherId.HasValue)
+            {
+                var v = await _context.Vouchers.FindAsync(dto.VoucherId.Value);
+                if (v == null || !v.IsActive || v.IsDeleted)
+                {
+                    return BadRequest("Voucher không tồn tại hoặc đã bị vô hiệu hóa.");
+                }
+                if (v.VoucherType == "Service")
+                {
+                    return BadRequest("Voucher dịch vụ không thể áp dụng cho đơn đặt phòng.");
+                }
+                if (v.TargetUserId.HasValue && v.TargetUserId.Value != dto.UserId)
+                {
+                    return BadRequest("Voucher này chỉ áp dụng cho một khách hàng cụ thể.");
+                }
+                if (v.UsageLimit.HasValue && v.UsageCount >= v.UsageLimit.Value)
+                {
+                    return BadRequest("Voucher đã đạt giới hạn lượt sử dụng.");
+                }
+            }
+
+            // ====================== TẠO BOOKING ======================
+            var booking = new Booking
+            {
+                UserId = dto.UserId,
+                GuestId = guestId,
+                VoucherId = dto.VoucherId,
+                BookingCode = GenerateBookingCode(dto.GuestPhone, DateTime.Now),
+                Status = "Pending"
+            };
+
+            // Chuẩn hóa ngày trước để dùng trong conflict check
+            var detailsToCreate = new List<(BookingDetailCreateDTO dto, RoomType roomType, BookingDetail detail)>();
+
+            foreach (var detailDto in dto.BookingDetails)
+            {
+                var roomType = await _context.RoomTypes
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(rt => rt.Id == detailDto.RoomTypeId);
+
+                if (roomType == null)
+                    return BadRequest($"Loại phòng ID {detailDto.RoomTypeId} không tồn tại.");
+
+                var detail = new BookingDetail
+                {
+                    RoomId = detailDto.RoomId,
+                    RoomTypeId = detailDto.RoomTypeId,
+                    CheckInDate = NormalizeCheckInDate(detailDto.CheckInDate),
+                    CheckOutDate = NormalizeCheckOutDate(detailDto.CheckOutDate),
+                    PricePerNight = roomType.BasePrice,
+                    Status = "Pending"
+                };
+
+                detailsToCreate.Add((detailDto, roomType, detail));
+            }
+
+            // Dùng transaction để tránh race condition khi 2 user đặt cùng phòng cùng lúc
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var holdCutoff = DateTime.Now.AddMinutes(-10);
+
+                foreach (var (detailDto, roomType, detail) in detailsToCreate)
+                {
+                    if (detailDto.RoomId.HasValue)
+                    {
+                        // Kiểm tra lại lần cuối TRONG transaction — tránh TOCTOU race condition
+                        var conflict = await _context.BookingDetails
+                            .AnyAsync(bd =>
+                                bd.RoomId == detailDto.RoomId &&
+                                bd.Status != "Cancelled" &&
+                                bd.Status != "CheckedOut" &&
+                                bd.Status != "Completed" &&
+                                // Confirmed/CheckedIn luôn chiếm phòng
+                                (bd.Status == "Confirmed" || bd.Status == "CheckedIn"
+                                // Pending chỉ chiếm nếu còn trong 10 phút hold
+                                || (bd.Status == "Pending" && bd.Booking != null && bd.Booking.CreatedAt > holdCutoff)) &&
+                                bd.CheckInDate < detail.CheckOutDate &&
+                                bd.CheckOutDate > detail.CheckInDate);
+
+                        if (conflict)
+                        {
+                            await transaction.RollbackAsync();
+                            return Conflict(new { message = $"Phòng {detailDto.RoomId} vừa được người khác đặt. Vui lòng chọn phòng khác." });
+                        }
+                    }
+
+                    booking.BookingDetails.Add(detail);
+                }
+
+                _context.Bookings.Add(booking);
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+
+            // Load đầy đủ để trả về (bao gồm Guest.Name)
+            var created = await _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.RoomType)
+                .AsNoTracking()
+                .FirstAsync(b => b.Id == booking.Id);
+
+            var responseDto = _mapper.Map<BookingResponseDTO>(created);
+
+            return CreatedAtAction(nameof(GetBooking), new { id = booking.Id }, responseDto);
+        }
+        // PATCH: api/Bookings/{id}/status - Cập nhật status
+        [HttpPatch("{id:int}/status")]
+        [Permission("EDIT_BOOKINGS")]
+        public async Task<IActionResult> UpdateBookingStatus(int id, [FromBody] BookingStatusUpdateDTO dto)
+        {
+            var booking = await _context.Bookings.FindAsync(id);
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+
+            booking.Status = dto.Status;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // PATCH: api/Bookings/{id}/details/{detailId}/confirm - Xác nhận (đã trả trước) cho 1 chi tiết phòng
+        [HttpPatch("{id:int}/details/{detailId:int}/confirm")]
+        [Permission("EDIT_BOOKINGS")]
+        public async Task<IActionResult> ConfirmBookingDetail(int id, int detailId)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+
+            var detail = booking.BookingDetails.FirstOrDefault(d => d.Id == detailId);
+            if (detail == null)
+                return NotFound("Không tìm thấy chi tiết booking.");
+
+            if (detail.Status == "Confirmed")
+                return BadRequest("Chi tiết booking đã ở trạng thái Confirmed.");
+
+            detail.Status = "Confirmed";
+
+            booking.Status = ResolveBookingStatusFromDetails(booking.BookingDetails);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // PATCH: api/Bookings/{id}/details/{detailId}/check-in - Check-in 1 phòng trong booking
+        [HttpPatch("{id:int}/details/{detailId:int}/check-in")]
+        [Permission("CHECKIN_BOOKING")]
+        public async Task<IActionResult> CheckInBookingDetail(int id, int detailId)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+
+            var detail = booking.BookingDetails.FirstOrDefault(d => d.Id == detailId);
+            if (detail == null)
+                return NotFound("Không tìm thấy chi tiết booking.");
+
+            if (detail.Status != "Confirmed")
+                return BadRequest("Phải trả trước (Confirmed) mới có thể check-in phòng này.");
+
+            if (detail.RoomId.HasValue)
+            {
+                var room = await _context.Rooms.FindAsync(detail.RoomId.Value);
+                if (room != null)
+                {
+                    room.Status = RoomStatuses.Occupied;
+                }
+            }
+
+            detail.Status = "CheckedIn";
+            booking.Status = ResolveBookingStatusFromDetails(booking.BookingDetails);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Phòng đã được check-in.", bookingId = booking.Id, bookingStatus = booking.Status, detailId = detailId });
+        }
+
+        // PATCH: api/Bookings/{id}/check-in - Check-in khách
+        [HttpPatch("{id:int}/check-in")]
+        [Permission("CHECKIN_BOOKING")]
+        public async Task<IActionResult> CheckIn(int id)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+            // Allow check-in for booking details that have been confirmed (per-room)
+            var confirmableDetails = booking.BookingDetails
+                .Where(d => d.Status == "Confirmed")
+                .ToList();
+
+            if (!confirmableDetails.Any())
+            {
+                return BadRequest("Không có phòng nào đã được xác nhận để check-in.");
+            }
+
+            foreach (var detail in confirmableDetails)
+            {
+                if (detail.RoomId.HasValue)
+                {
+                    var room = await _context.Rooms.FindAsync(detail.RoomId.Value);
+                    if (room != null)
+                    {
+                        room.Status = RoomStatuses.Occupied;
+                    }
+                }
+
+                // mark detail as checked-in
+                detail.Status = "CheckedIn";
+            }
+
+            booking.Status = ResolveBookingStatusFromDetails(booking.BookingDetails);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Khách đã được check-in thành công.",
+                bookingId = booking.Id,
+                newStatus = booking.Status
+            });
+        }
+
+        // PATCH: api/Bookings/{id}/check-out - Check-out khách
+        [HttpPatch("{id:int}/check-out")]
+        [Permission("CHECKOUT_BOOKING")]
+        public async Task<IActionResult> CheckOut(int id)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+
+            var checkedInDetails = booking.BookingDetails
+                .Where(detail => detail.Status == "CheckedIn")
+                .ToList();
+
+            if (!checkedInDetails.Any())
+                return BadRequest("Chỉ có thể check-out cho booking có phòng đang ở trạng thái 'CheckedIn'.");
+
+            // Cập nhật trạng thái các phòng liên quan thành Available
+            foreach (var detail in checkedInDetails)
+            {
+                if (detail.RoomId.HasValue)
+                {
+                    var room = await _context.Rooms.FindAsync(detail.RoomId.Value);
+                    if (room != null)
+                    {
+                        room.Status = RoomStatuses.Available;
+                        room.CleaningStatus = RoomCleaningStatuses.Dirty;
+                    }
+                }
+
+                detail.Status = "CheckedOut";
+            }
+
+            booking.Status = ResolveBookingStatusFromDetails(booking.BookingDetails);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Khách đã được check-out thành công.",
+                bookingId = booking.Id,
+                newStatus = booking.Status
+            });
+        }
+
+        // PATCH: api/Bookings/{id}/details/{detailId}/check-out - Check-out 1 phòng trong booking
+        [HttpPatch("{id:int}/details/{detailId:int}/check-out")]
+        [Permission("CHECKOUT_BOOKING")]
+        public async Task<IActionResult> CheckOutBookingDetail(int id, int detailId)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+
+            var detail = booking.BookingDetails.FirstOrDefault(d => d.Id == detailId);
+            if (detail == null)
+                return NotFound("Không tìm thấy chi tiết booking.");
+
+            if (detail.Status != "CheckedIn")
+                return BadRequest("Chỉ có thể check-out cho phòng có trạng thái 'CheckedIn'.");
+
+            if (detail.RoomId.HasValue)
+            {
+                var room = await _context.Rooms.FindAsync(detail.RoomId.Value);
+                if (room != null)
+                {
+                    room.Status = RoomStatuses.Available;
+                    room.CleaningStatus = RoomCleaningStatuses.Dirty;
+                }
+            }
+
+            detail.Status = "CheckedOut";
+            booking.Status = ResolveBookingStatusFromDetails(booking.BookingDetails);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Phòng đã được check-out.",
+                bookingId = booking.Id,
+                bookingStatus = booking.Status,
+                detailId = detailId
+            });
+        }
+
+        // PATCH: api/Bookings/{id}/cancel - Hủy booking
+        [HttpPatch("{id:int}/cancel")]
+        [Permission("DELETE_BOOKINGS")]
+        public async Task<IActionResult> CancelBooking(int id)
+        {
+            var booking = await _context.Bookings
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (booking == null)
+                return NotFound("Không tìm thấy booking.");
+
+            if (booking.Status == "Cancelled")
+                return BadRequest("Booking này đã bị hủy trước đó.");
+
+            if (booking.Status == "Completed" || booking.BookingDetails.Any(detail =>
+                    detail.Status == "Confirmed" ||
+                    detail.Status == "CheckedIn" ||
+                    detail.Status == "CheckedOut" ||
+                    detail.Status == "Completed"))
+                return BadRequest("Không thể hủy booking đã thanh toán, check-in, check-out hoặc hoàn thành.");
+
+            booking.Status = "Cancelled";
+            foreach (var detail in booking.BookingDetails.Where(detail => detail.Status != "Completed"))
+            {
+                detail.Status = "Cancelled";
+            }
+
+            // 2. Giải phóng các phòng đang Occupied thuộc booking này
+            foreach (var detail in booking.BookingDetails)
+            {
+                if (detail.RoomId.HasValue)
+                {
+                    var room = await _context.Rooms.FindAsync(detail.RoomId.Value);
+                    if (room != null && room.Status == RoomStatuses.Occupied)
+                    {
+                        room.Status = RoomStatuses.Available;
+                        // Có thể cập nhật CleaningStatus nếu cần
+                        // room.CleaningStatus = RoomCleaningStatuses.Dirty;
+                    }
+                }
+            }
+            
+            var roomNumbers = string.Join(", ", booking.BookingDetails.Select(bd => bd.Room?.RoomNumber ?? "Chưa gán"));
+            _context.Notifications.Add(new Notification
+            {
+                UserId = booking.UserId,
+                Title = "Booking đã hủy",
+                Content = $"Booking của phòng {roomNumbers} .#{booking.BookingCode} đã hủy",
+                Type = "Warning",
+                CreatedAt = DateTime.UtcNow
+            });
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Booking đã được hủy thành công.",
+                bookingId = booking.Id,
+                newStatus = booking.Status
+            });
+        }
+
+        // PUT: api/Bookings/{id}/change-room - Chuyển đổi phòng (tính tiền chênh lệch)
+        [HttpPut("{id:int}/change-room")]
+        [Permission("EDIT_BOOKINGS")]
+        public async Task<ActionResult<object>> ChangeRoom(int id, [FromBody] ChangeRoomRequestDTO request)
+        {
+            var bookingDetail = await _context.BookingDetails
+                .Include(bd => bd.Booking)
+                .Include(bd => bd.RoomType)
+                .FirstOrDefaultAsync(bd => bd.Id == request.BookingDetailId && bd.BookingId == id);
+
+            if (bookingDetail == null)
+                return NotFound("Không tìm thấy chi tiết booking.");
+
+            var newRoomType = await _context.RoomTypes.FindAsync(request.NewRoomTypeId);
+            if (newRoomType == null)
+                return BadRequest("Loại phòng mới không tồn tại.");
+
+            int nights = (bookingDetail.CheckOutDate - bookingDetail.CheckInDate).Days;
+            if (nights <= 0) nights = 1;
+
+            decimal oldPriceTotal = bookingDetail.PricePerNight * nights;
+            decimal newPriceTotal = newRoomType.BasePrice * nights;
+
+            // Cập nhật thông tin phòng mới
+            bookingDetail.RoomTypeId = request.NewRoomTypeId;
+            bookingDetail.RoomId = request.NewRoomId;
+            bookingDetail.PricePerNight = newRoomType.BasePrice;
+
+            await _context.SaveChangesAsync();
+
+            decimal difference = newPriceTotal - oldPriceTotal;
+
+            return Ok(new
+            {
+                message = "Chuyển phòng thành công",
+                oldPricePerNight = bookingDetail.PricePerNight, // giá cũ
+                newPricePerNight = newRoomType.BasePrice,
+                nights = nights,
+                amountDifference = difference,   // > 0 = phải bù, < 0 = được hoàn
+                isAdditionalPayment = difference > 0
+            });
+        }
+
+        // GET: api/Bookings/arrivals - Khách đến hôm nay
+        [HttpGet("arrivals")]
+        [Permission("VIEW_BOOKINGS")]
+        public async Task<ActionResult<PagedResponse<BookingResponseDTO>>> GetArrivals(
+            [FromQuery] DateTime? date = null,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 20)
+        {
+            // Hủy các Pending booking hết hạn trước khi query
+            await CancelExpiredPendingBookingsAsync();
+
+            var targetDate = date?.Date ?? DateTime.Today;
+            var holdCutoff = DateTime.Now.AddMinutes(-10);
+
+            var query = _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.RoomType)
+                .Where(b => b.Status != "Cancelled" && b.Status != "Completed" && b.BookingDetails.Any(bd =>
+                    (bd.CheckInDate.Date == targetDate || bd.CheckInDate.AddHours(VietnamUtcOffsetHours).Date == targetDate) &&
+                    (bd.Status == "Confirmed" ||
+                     // Chỉ cho Pending nếu chưa hết 10 phút
+                     (bd.Status == "Pending" && b.CreatedAt > holdCutoff)) &&
+                    !_context.Invoices.Any(invoice =>
+                        invoice.BookingDetailId == bd.Id &&
+                        invoice.Status == "Paying")))
+                .AsNoTracking();
+
+            var totalCount = await query.CountAsync();
+
+            var bookings = await query
+                .OrderBy(b => b.BookingDetails.Min(bd => bd.CheckInDate))
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            await ApplyInvoicePaymentStatusesAsync(bookings);
+
+            var dtos = _mapper.Map<List<BookingResponseDTO>>(bookings);
+
+            return Ok(new PagedResponse<BookingResponseDTO>(dtos, totalCount, page, pageSize));
+        }
+
+        // GET: api/Bookings/in-house - Khách đang lưu trú
+        [HttpGet("in-house")]
+        [Permission("VIEW_BOOKINGS")]
+        public async Task<ActionResult<PagedResponse<BookingResponseDTO>>> GetInHouse(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 20)
+        {
+            var query = _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.RoomType)
+                .Where(b => b.BookingDetails.Any(d => d.Status == "CheckedIn"))
+                .AsNoTracking();
+
+            var totalCount = await query.CountAsync();
+
+            var bookings = await query
+                .OrderByDescending(b => b.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var dtos = _mapper.Map<List<BookingResponseDTO>>(bookings);
+
+            return Ok(new PagedResponse<BookingResponseDTO>(dtos, totalCount, page, pageSize));
+        }
+
+        // GET: api/Bookings/departures - Khách dự kiến check-out hôm nay
+        [HttpGet("departures")]
+        [Permission("VIEW_BOOKINGS")]
+        public async Task<ActionResult<PagedResponse<BookingResponseDTO>>> GetDepartures(
+            [FromQuery] DateTime? date = null,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 20)
+        {
+            var targetDate = date?.Date ?? DateTime.Today;
+
+            var query = _context.Bookings
+                .Include(b => b.Guest)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.Room)
+                .Include(b => b.BookingDetails)
+                    .ThenInclude(bd => bd.RoomType)
+                .Where(b => b.BookingDetails.Any(d => d.Status == "CheckedIn")
+                    && b.BookingDetails.Any(bd =>
+                        bd.CheckOutDate.Date == targetDate || bd.CheckOutDate.AddHours(VietnamUtcOffsetHours).Date == targetDate))
+                .AsNoTracking();
+
+            var totalCount = await query.CountAsync();
+
+            var bookings = await query
+                .OrderBy(b => b.BookingDetails.Min(bd => bd.CheckOutDate))
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var dtos = _mapper.Map<List<BookingResponseDTO>>(bookings);
+
+            return Ok(new PagedResponse<BookingResponseDTO>(dtos, totalCount, page, pageSize));
+        }
+    }
+}

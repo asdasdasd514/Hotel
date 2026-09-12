@@ -1,0 +1,103 @@
+const STORAGE_KEY = "receptionist-booking-payment-state";
+const PAID_DETAIL_STATUSES = ["Confirmed", "CheckedIn", "CheckedOut", "Completed"];
+
+const readStore = () => {
+  if (typeof window === "undefined") return {};
+
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+};
+
+const writeStore = (store) => {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+};
+
+export const getBookingPaymentState = (booking) => {
+  if (!booking?.id) {
+    return {
+      paidDetailIds: [],
+      depositedDetailIds: [],
+      depositComplete: false,
+      hasDeposit: false,
+      allPaid: false,
+      hasAnyPayment: false,
+    };
+  }
+
+  const store = readStore();
+  const entry = store[String(booking.id)] || {};
+  const detailIds = (booking.bookingDetails || []).map((detail) => detail.id).filter(Boolean);
+  const storedPaidDetailIds = (Array.isArray(entry.paidDetailIds) ? entry.paidDetailIds : []).filter((id) =>
+    detailIds.includes(id),
+  );
+  const statusPaidDetailIds = (booking.bookingDetails || [])
+    .filter((detail) => PAID_DETAIL_STATUSES.includes(detail?.status))
+    .map((detail) => detail.id)
+    .filter(Boolean);
+  const paidDetailIds = Array.from(new Set([...storedPaidDetailIds, ...statusPaidDetailIds]));
+  const depositComplete = detailIds.length > 0 && detailIds.every((id) => paidDetailIds.includes(id));
+
+  return {
+    paidDetailIds,
+    depositedDetailIds: paidDetailIds,
+    depositComplete,
+    hasDeposit: depositComplete || paidDetailIds.length > 0,
+    allPaid: depositComplete,
+    hasAnyPayment: depositComplete || paidDetailIds.length > 0,
+  };
+};
+
+export const isBookingDeleteLocked = (booking) => {
+  const paymentState = getBookingPaymentState(booking);
+  return (
+    paymentState.hasAnyPayment ||
+    booking?.status === "Cancelled" ||
+    booking?.status === "Completed" ||
+    (booking?.bookingDetails || []).some((detail) => detail?.status && detail.status !== "Pending")
+  );
+};
+
+export const isBookingDetailPaid = (booking, detailId) => {
+  const paymentState = getBookingPaymentState(booking);
+  return paymentState.allPaid || paymentState.paidDetailIds.includes(detailId);
+};
+
+export const markBookingDetailPaid = (bookingId, detailId) => {
+  if (!bookingId || !detailId) return;
+
+  const store = readStore();
+  const key = String(bookingId);
+  const entry = store[key] || { paidDetailIds: [] };
+  const nextPaidIds = Array.from(new Set([...(entry.paidDetailIds || []), detailId]));
+
+  store[key] = {
+    ...entry,
+    paidDetailIds: nextPaidIds,
+  };
+
+  writeStore(store);
+};
+
+export const markBookingAllPaid = (booking) => {
+  if (!booking?.id) return;
+
+  const detailIds = (booking.bookingDetails || []).map((detail) => detail.id).filter(Boolean);
+  const store = readStore();
+  store[String(booking.id)] = {
+    paidDetailIds: detailIds,
+  };
+  writeStore(store);
+};
+
+export const clearBookingPaymentState = (bookingId) => {
+  if (!bookingId) return;
+
+  const store = readStore();
+  delete store[String(bookingId)];
+  writeStore(store);
+};

@@ -1,0 +1,101 @@
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginWithEmail, loginWithGoogle } from "../api/auth/authApi";
+import { saveAuth } from "../utils/authStorage";
+
+
+const resolveRedirectPath = (role) => {
+  const normalizedRole = role?.trim().toLowerCase();
+
+  // Nếu là role User hoặc Guest thì về trang chủ (trang đặt phòng)
+  if (normalizedRole === "user" || normalizedRole === "guest" || normalizedRole === "customer" || !normalizedRole) {
+    return "/";
+  }
+
+  // Tất cả các role khác (Admin, Receptionist, Manager, Housekeeping và các role mới tạo) đều về Admin Dashboard
+  return "/admin/dashboard";
+};
+
+export const useLogin = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+
+  const handleChange = useCallback((event) => {
+    const { name, value, type, checked } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  }, []);
+
+  const finishLogin = useCallback((authData) => {
+    saveAuth(authData);
+    navigate(resolveRedirectPath(authData.role));
+  }, [navigate]);
+
+  const handleSubmit = useCallback(async (event) => {
+    event.preventDefault();
+    setErrorMessage("");
+    setIsLoading(true);
+
+    try {
+      const response = await loginWithEmail({
+        email: formData.email.trim(),
+        password: formData.password,
+      });
+
+      finishLogin(response);
+    } catch (error) {
+      const message =
+        error.response?.data?.message ||
+        error.response?.data ||
+        "Không thể đăng nhập bằng email và mật khẩu.";
+
+      setErrorMessage(typeof message === "string" ? message : "Không thể đăng nhập bằng email và mật khẩu.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, [formData, finishLogin]);
+
+  const handleGoogleCredential = useCallback(async (credential) => {
+    setErrorMessage("");
+    setIsGoogleLoading(true);
+
+    try {
+      const response = await loginWithGoogle({
+        googleCredential: credential,
+      });
+
+      finishLogin(response);
+    } catch (error) {
+      const message =
+        error.response?.data?.message ||
+        error.response?.data ||
+        "Không thể đăng nhập bằng tài khoản Google.";
+
+      setErrorMessage(typeof message === "string" ? message : "Không thể đăng nhập bằng tài khoản Google.");
+    } finally {
+      setIsGoogleLoading(false);
+    }
+  }, [finishLogin]);
+
+  return {
+    formData,
+    showPassword,
+    setShowPassword,
+    errorMessage,
+    isLoading,
+    isGoogleLoading,
+    handleChange,
+    handleSubmit,
+    handleGoogleCredential,
+  };
+};

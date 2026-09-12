@@ -1,0 +1,22 @@
+namespace backend.DTOs.User
+{
+    public class UserProfileResponseDTO
+    {
+        public int Id { get; set; }
+        public int? RoleId { get; set; }
+        public int? MembershipId { get; set; }
+        public string FullName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string? Phone { get; set; }
+        public string? AvatarUrl { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public string? RoleName { get; set; }
+        public int Points { get; set; }
+        public string? MembershipName { get; set; }
+        public string? MembershipDescription { get; set; }
+        public int? CurrentMembershipMinPoints { get; set; }
+        public string? NextMembershipName { get; set; }
+        public int? NextMembershipMinPoints { get; set; }
+        public bool? Status { get; set; }
+    }
+}

@@ -1,0 +1,626 @@
+using backend.Common;
+using backend.Data;
+using backend.DTOs.Service;
+using backend.Models;
+using backend.Security;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Globalization;
+
+namespace backend.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Tags("Services")]
+    public class ServicesController : ControllerBase
+    {
+        private readonly AppDbContext _context;
+        private readonly CloudinaryService _cloudinaryService;
+
+        public ServicesController(AppDbContext context, CloudinaryService cloudinaryService)
+        {
+            _context = context;
+            _cloudinaryService = cloudinaryService;
+        }
+
+        private static ServiceResponseDTO MapService(Service service) => new()
+        {
+            Id = service.Id,
+            CategoryId = service.CategoryId,
+            CategoryName = service.Category?.Name,
+            Name = service.Name,
+            Slug = service.Slug,
+            ThumbnailUrl = service.ThumbnailUrl,
+            Description = service.Description,
+            Location = service.Location,
+            Price = service.Price,
+            Unit = service.Unit,
+            Status = service.Status,
+            Images = service.ServiceImages.Select(img => img.ImageUrl).ToList()
+        };
+
+        private static ServiceUsageResponseDTO MapUsage(OrderServiceDetail detail) => new()
+        {
+            Id = detail.Id,
+            OrderServiceId = detail.OrderServiceId ?? 0,
+            BookingId = detail.OrderService?.BookingDetail?.BookingId,
+            BookingDetailId = detail.OrderService?.BookingDetailId,
+            BookingCode = detail.OrderService?.BookingDetail?.Booking?.BookingCode ?? string.Empty,
+            RoomNumber = detail.OrderService?.BookingDetail?.Room?.RoomNumber ?? "--",
+            RoomName = detail.OrderService?.BookingDetail?.RoomType?.Name ?? "Phòng",
+            GuestName = detail.OrderService?.BookingDetail?.Booking?.Guest?.Name ?? detail.OrderService?.User?.FullName ?? "Khách",
+            ServiceId = detail.ServiceId ?? 0,
+            ServiceName = detail.Service?.Name ?? "Dịch vụ",
+            Quantity = detail.Quantity,
+            UnitPrice = detail.UnitPrice,
+            LineTotal = detail.UnitPrice * detail.Quantity,
+            OrderTotalAmount = detail.OrderService?.TotalAmount,
+            UsedAt = detail.OrderService?.OrderDate,
+            PaymentStatus = string.Equals(detail.OrderService?.Status, "Paid", StringComparison.OrdinalIgnoreCase)
+                ? "Paid"
+                : "Unpaid"
+        };
+
+        [HttpGet]
+        [Permission("VIEW_SERVICES")]
+        public async Task<ActionResult<IEnumerable<ServiceResponseDTO>>> GetServices([FromQuery] bool includeInactive = true)
+        {
+            var servicesWithBadSlugs = await _context.Services.ToListAsync();
+            bool hasChanges = false;
+            foreach (var s in servicesWithBadSlugs)
+            {
+                var newSlug = Slugify(s.Name);
+                if (s.Slug != newSlug)
+                {
+                    s.Slug = newSlug;
+                    hasChanges = true;
+                }
+            }
+            if (hasChanges)
+            {
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok(servicesWithBadSlugs.Select(MapService));
+        }
+
+        [HttpGet("{id:int}")]
+        [Permission("VIEW_SERVICES")]
+        public async Task<ActionResult<ServiceResponseDTO>> GetService(int id)
+        {
+            var service = await _context.Services
+                .AsNoTracking()
+                .Include(service => service.Category)
+                .Include(service => service.ServiceImages)
+                .FirstOrDefaultAsync(item => item.Id == id);
+
+            if (service == null)
+            {
+                return NotFound("Không tìm thấy dịch vụ.");
+            }
+
+            return Ok(MapService(service));
+        }
+
+        [HttpGet("in-house")]
+        [Permission("VIEW_SERVICES")]
+        public async Task<ActionResult<IEnumerable<InHouseRoomResponseDTO>>> GetInHouseRooms()
+        {
+            var rooms = await _context.BookingDetails
+                .AsNoTracking()
+                .Include(detail => detail.Booking)
+                    .ThenInclude(booking => booking!.Guest)
+                .Include(detail => detail.Room)
+                .Include(detail => detail.RoomType)
+                .Where(detail => detail.Status == "CheckedIn")
+                .OrderBy(detail => detail.Room != null ? detail.Room.RoomNumber : string.Empty)
+                .Select(detail => new InHouseRoomResponseDTO
+                {
+                    BookingId = detail.BookingId ?? 0,
+                    BookingDetailId = detail.Id,
+                    BookingCode = detail.Booking != null ? detail.Booking.BookingCode : string.Empty,
+                    RoomNumber = detail.Room != null ? detail.Room.RoomNumber : "--",
+                    RoomName = detail.RoomType != null ? detail.RoomType.Name : "Phòng",
+                    GuestName = detail.Booking != null && detail.Booking.Guest != null
+                        ? detail.Booking.Guest.Name ?? "Khách"
+                        : "Khách",
+                    CheckInDate = detail.CheckInDate,
+                    CheckOutDate = detail.CheckOutDate
+                })
+                .ToListAsync();
+
+            return Ok(rooms);
+        }
+
+        [HttpGet("history")]
+        [Permission("VIEW_SERVICES")]
+        public async Task<ActionResult<IEnumerable<ServiceUsageResponseDTO>>> GetUsageHistory(
+            [FromQuery] string? paymentStatus = null,
+            [FromQuery] int? bookingDetailId = null,
+            [FromQuery] string? search = null)
+        {
+            var query = _context.OrderServiceDetails
+                .AsNoTracking()
+                .Include(detail => detail.Service)
+                .Include(detail => detail.OrderService)
+                    .ThenInclude(order => order!.BookingDetail)
+                        .ThenInclude(bookingDetail => bookingDetail!.Booking)
+                            .ThenInclude(booking => booking!.Guest)
+                .Include(detail => detail.OrderService)
+                    .ThenInclude(order => order!.BookingDetail)
+                        .ThenInclude(bookingDetail => bookingDetail!.Room)
+                .Include(detail => detail.OrderService)
+                    .ThenInclude(order => order!.User)
+                .AsQueryable();
+
+            if (bookingDetailId.HasValue)
+            {
+                query = query.Where(detail => detail.OrderService != null && detail.OrderService.BookingDetailId == bookingDetailId.Value);
+            }
+            else
+            {
+                // Optionally show all or filter logic
+            }
+
+            if (!string.IsNullOrWhiteSpace(paymentStatus))
+            {
+                var normalizedStatus = paymentStatus.Trim().ToLowerInvariant();
+                if (normalizedStatus == "paid")
+                {
+                    query = query.Where(detail => detail.OrderService != null && detail.OrderService.Status == "Paid");
+                }
+                else if (normalizedStatus == "unpaid")
+                {
+                    query = query.Where(detail => detail.OrderService == null || detail.OrderService.Status != "Paid");
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var normalizedSearch = search.Trim().ToLowerInvariant();
+                query = query.Where(detail =>
+                    (detail.Service != null && detail.Service.Name.ToLower().Contains(normalizedSearch)) ||
+                    (detail.OrderService != null &&
+                        detail.OrderService.BookingDetail != null &&
+                        ((detail.OrderService.BookingDetail.Room != null &&
+                          detail.OrderService.BookingDetail.Room.RoomNumber.ToLower().Contains(normalizedSearch)) ||
+                         (detail.OrderService.BookingDetail.Booking != null &&
+                          detail.OrderService.BookingDetail.Booking.BookingCode.ToLower().Contains(normalizedSearch)) ||
+                         (detail.OrderService.BookingDetail.Booking != null &&
+                          detail.OrderService.BookingDetail.Booking.Guest != null &&
+                          (detail.OrderService.BookingDetail.Booking.Guest.Name ?? string.Empty).ToLower().Contains(normalizedSearch)))));
+            }
+
+            var items = await query
+                .OrderByDescending(detail => detail.OrderService != null ? detail.OrderService.OrderDate : DateTime.MinValue)
+                .ThenByDescending(detail => detail.Id)
+                .ToListAsync();
+
+            return Ok(items.Select(MapUsage));
+        }
+
+        [HttpPost("apply")]
+        [Permission("CREATE_SERVICES")]
+        public async Task<ActionResult<ServiceUsageResponseDTO>> ApplyService([FromBody] ApplyServiceDTO request)
+        {
+            var items = new List<ApplyServiceItemDTO>();
+            if (request.Items != null && request.Items.Count > 0)
+            {
+                items.AddRange(request.Items);
+            }
+            else
+            {
+                if (!request.ServiceId.HasValue)
+                {
+                    return BadRequest("Thiếu dịch vụ cần áp dụng.");
+                }
+                if (request.Quantity <= 0)
+                {
+                    return BadRequest("Số lượng phải lớn hơn 0.");
+                }
+                items.Add(new ApplyServiceItemDTO
+                {
+                    ServiceId = request.ServiceId.Value,
+                    Quantity = request.Quantity
+                });
+            }
+
+            if (items.Count == 0)
+            {
+                return BadRequest("Danh sách dịch vụ cần áp dụng không được rỗng.");
+            }
+
+            BookingDetail? bookingDetail = null;
+            if (request.BookingDetailId.HasValue)
+            {
+                bookingDetail = await _context.BookingDetails
+                    .Include(detail => detail.Booking)
+                        .ThenInclude(booking => booking!.Guest)
+                    .Include(detail => detail.Room)
+                    .Include(detail => detail.RoomType)
+                    .FirstOrDefaultAsync(detail => detail.Id == request.BookingDetailId.Value);
+
+                if (bookingDetail == null)
+                {
+                    return NotFound("Không tìm thấy phòng lưu trú.");
+                }
+
+                if (!string.Equals(bookingDetail.Status, "CheckedIn", StringComparison.OrdinalIgnoreCase))
+                {
+                    return BadRequest("Chỉ được áp dụng dịch vụ cho phòng đang lưu trú.");
+                }
+            }
+
+            // Fetch and validate services
+            var serviceIds = items.Select(i => i.ServiceId).Distinct().ToList();
+            var services = await _context.Services
+                .Where(s => serviceIds.Contains(s.Id) && s.Status)
+                .ToDictionaryAsync(s => s.Id);
+
+            foreach (var item in items)
+            {
+                if (!services.ContainsKey(item.ServiceId))
+                {
+                    return NotFound($"Không tìm thấy dịch vụ đang hoạt động với ID {item.ServiceId}.");
+                }
+                if (item.Quantity <= 0)
+                {
+                    return BadRequest("Số lượng của từng dịch vụ phải lớn hơn 0.");
+                }
+            }
+
+            // Calculate original total amount
+            decimal originalTotal = 0;
+            foreach (var item in items)
+            {
+                var s = services[item.ServiceId];
+                originalTotal += s.Price * item.Quantity;
+            }
+
+            decimal finalTotal = originalTotal;
+            Voucher? voucher = null;
+            UserVoucher? userVoucher = null;
+
+            if (request.VoucherId.HasValue)
+            {
+                if (bookingDetail?.Booking?.UserId != null)
+                {
+                    userVoucher = await _context.UserVouchers
+                        .Include(uv => uv.Voucher)
+                        .FirstOrDefaultAsync(uv =>
+                            uv.UserId == bookingDetail.Booking.UserId &&
+                            uv.VoucherId == request.VoucherId.Value &&
+                            !uv.IsUsed);
+                    
+                    if (userVoucher != null)
+                    {
+                        voucher = userVoucher.Voucher;
+                    }
+                }
+
+                if (voucher == null)
+                {
+                    voucher = await _context.Vouchers.FirstOrDefaultAsync(v =>
+                        v.Id == request.VoucherId.Value &&
+                        v.IsActive &&
+                        !v.IsDeleted);
+                }
+
+                if (voucher == null)
+                {
+                    return BadRequest("Voucher không tồn tại hoặc đã hết hạn/sử dụng.");
+                }
+
+                if (!string.Equals(voucher.VoucherType, "Service", StringComparison.OrdinalIgnoreCase))
+                {
+                    return BadRequest("Voucher này không áp dụng cho đặt dịch vụ.");
+                }
+
+                if (voucher.MinBookingValue.HasValue && originalTotal < voucher.MinBookingValue.Value)
+                {
+                    return BadRequest($"Đơn hàng chưa đạt giá trị tối thiểu {voucher.MinBookingValue.Value.ToString("N0")} VND để áp dụng voucher.");
+                }
+
+                if (string.Equals(voucher.DiscountType, "PERCENT", StringComparison.OrdinalIgnoreCase))
+                {
+                    decimal discount = originalTotal * (voucher.DiscountValue / 100m);
+                    finalTotal = originalTotal - discount;
+                }
+                else
+                {
+                    finalTotal = originalTotal - voucher.DiscountValue;
+                }
+
+                if (finalTotal < 0)
+                {
+                    finalTotal = 0;
+                }
+
+                if (userVoucher != null)
+                {
+                    userVoucher.IsUsed = true;
+                    userVoucher.UsedAt = DateTime.UtcNow;
+                }
+
+                voucher.UsageCount += 1;
+            }
+
+            var orderService = new OrderService
+            {
+                BookingDetailId = bookingDetail?.Id,
+                OrderDate = DateTime.UtcNow,
+                Status = request.IsPaid ? "Paid" : "Unpaid",
+                TotalAmount = finalTotal
+            };
+
+            _context.OrderServices.Add(orderService);
+
+            var firstDetail = new OrderServiceDetail();
+            var serviceNames = new List<string>();
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                var item = items[i];
+                var s = services[item.ServiceId];
+                serviceNames.Add(s.Name);
+
+                var orderServiceDetail = new OrderServiceDetail
+                {
+                    ServiceId = s.Id,
+                    Quantity = item.Quantity,
+                    UnitPrice = s.Price,
+                    OrderService = orderService
+                };
+
+                _context.OrderServiceDetails.Add(orderServiceDetail);
+
+                if (i == 0)
+                {
+                    firstDetail = orderServiceDetail;
+                    firstDetail.Service = s;
+                }
+            }
+
+            if (request.IsPaid && bookingDetail != null)
+            {
+                var joinedServiceNames = string.Join(", ", serviceNames);
+                if (joinedServiceNames.Length > 200)
+                {
+                    joinedServiceNames = joinedServiceNames.Substring(0, 197) + "...";
+                }
+
+                var invoice = new Invoice
+                {
+                    BookingId = bookingDetail.BookingId,
+                    BookingDetailId = bookingDetail.Id,
+                    Code = $"DVK-{DateTime.UtcNow:HHmmss}",
+                    BookingCode = bookingDetail.Booking?.BookingCode,
+                    RoomName = joinedServiceNames,
+                    GuestName = bookingDetail.Booking?.Guest?.Name,
+                    TotalServiceAmount = originalTotal,
+                    VoucherId = voucher?.Id,
+                    VoucherCode = voucher?.Code,
+                    VoucherDiscountType = voucher?.DiscountType,
+                    VoucherDiscountValue = voucher?.DiscountValue,
+                    DiscountAmount = originalTotal - finalTotal,
+                    FinalTotal = finalTotal,
+                    Status = "Completed",
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow,
+                    PaidAt = DateTime.UtcNow
+                };
+                _context.Invoices.Add(invoice);
+                
+                var payment = new Payment
+                {
+                    Invoice = invoice,
+                    AmountPaid = finalTotal,
+                    PaymentDate = DateTime.UtcNow,
+                    Status = "Completed"
+                };
+                _context.Payments.Add(payment);
+            }
+
+            await _context.SaveChangesAsync();
+
+            orderService.BookingDetail = bookingDetail;
+            firstDetail.OrderServiceId = orderService.Id;
+            firstDetail.OrderService = orderService;
+
+            return Created($"/api/Services/history", MapUsage(firstDetail));
+        }
+
+        [HttpPost]
+        [Permission("CREATE_SERVICES")]
+        public async Task<ActionResult<ServiceResponseDTO>> CreateService([FromBody] ServiceUpsertDTO request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Name))
+            {
+                return BadRequest("Tên dịch vụ là bắt buộc.");
+            }
+
+            if (request.Price < 0)
+            {
+                return BadRequest("Giá dịch vụ không hợp lệ.");
+            }
+
+            var service = new Service
+            {
+                CategoryId = request.CategoryId,
+                Name = request.Name.Trim(),
+                Slug = Slugify(request.Name),
+                ThumbnailUrl = request.ThumbnailUrl,
+                Description = request.Description,
+                Location = request.Location,
+                Price = request.Price,
+                Unit = string.IsNullOrWhiteSpace(request.Unit) ? null : request.Unit.Trim(),
+                Status = request.Status,
+                ServiceImages = request.Images.Select(url => new ServiceImage { ImageUrl = url }).ToList()
+            };
+
+            _context.Services.Add(service);
+            await _context.SaveChangesAsync();
+
+            return Created($"/api/Services/{service.Id}", MapService(service));
+        }
+
+        [HttpPut("{id:int}")]
+        [Permission("EDIT_SERVICES")]
+        public async Task<ActionResult<ServiceResponseDTO>> UpdateService(int id, [FromBody] ServiceUpsertDTO request)
+        {
+            var service = await _context.Services
+                .Include(s => s.ServiceImages)
+                .FirstOrDefaultAsync(item => item.Id == id);
+
+            if (service == null)
+            {
+                return NotFound("Không tìm thấy dịch vụ.");
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Name))
+            {
+                return BadRequest("Tên dịch vụ là bắt buộc.");
+            }
+
+            if (request.Price < 0)
+            {
+                return BadRequest("Giá dịch vụ không hợp lệ.");
+            }
+
+            // Identify images to delete from Cloudinary
+            var currentImageUrls = service.ServiceImages.Select(img => img.ImageUrl).ToList();
+            var newImageUrls = request.Images;
+            var imagesToDelete = currentImageUrls.Except(newImageUrls).ToList();
+
+            // Also check thumbnail
+            if (!string.IsNullOrEmpty(service.ThumbnailUrl) && service.ThumbnailUrl != request.ThumbnailUrl)
+            {
+                imagesToDelete.Add(service.ThumbnailUrl);
+            }
+
+            foreach (var imageUrl in imagesToDelete)
+            {
+                await _cloudinaryService.DeleteImageByUrlAsync(imageUrl);
+            }
+
+            service.CategoryId = request.CategoryId;
+            service.Name = request.Name.Trim();
+            service.Slug = Slugify(request.Name);
+            service.ThumbnailUrl = request.ThumbnailUrl;
+            service.Description = request.Description;
+            service.Location = request.Location;
+            service.Price = request.Price;
+            service.Unit = string.IsNullOrWhiteSpace(request.Unit) ? null : request.Unit.Trim();
+            service.Status = request.Status;
+
+            // Update images in database
+            _context.ServiceImages.RemoveRange(service.ServiceImages);
+            service.ServiceImages = request.Images.Select(url => new ServiceImage { ImageUrl = url }).ToList();
+
+            await _context.SaveChangesAsync();
+
+            return Ok(MapService(service));
+        }
+
+        [HttpDelete("{id:int}")]
+        [Permission("DELETE_SERVICES")]
+        public async Task<IActionResult> DeleteService(int id)
+        {
+            var service = await _context.Services
+                .Include(s => s.ServiceImages)
+                .FirstOrDefaultAsync(item => item.Id == id);
+
+            if (service == null)
+            {
+                return NotFound("Không tìm thấy dịch vụ.");
+            }
+
+            // Cleanup Cloudinary
+            if (!string.IsNullOrEmpty(service.ThumbnailUrl))
+            {
+                await _cloudinaryService.DeleteImageByUrlAsync(service.ThumbnailUrl);
+            }
+
+            foreach (var img in service.ServiceImages)
+            {
+                await _cloudinaryService.DeleteImageByUrlAsync(img.ImageUrl);
+            }
+
+            _context.Services.Remove(service);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+        [HttpPost("upload-images")]
+        [Consumes("multipart/form-data")]
+        [RequestSizeLimit(50_000_000)]
+        [Permission("CREATE_SERVICES", "EDIT_SERVICES")]
+        public async Task<ActionResult<object>> UploadServiceImages([FromForm] List<IFormFile> files, [FromForm] string? serviceName = null)
+        {
+            if (files == null || files.Count == 0)
+            {
+                return BadRequest("Vui lòng chọn ít nhất một hình ảnh.");
+            }
+
+            var folderName = Slugify(serviceName);
+            var folder = string.IsNullOrWhiteSpace(folderName)
+                ? "home/services/general"
+                : $"home/services/{folderName}";
+
+            var results = new List<string>();
+            foreach (var file in files)
+            {
+                var uploadedUrl = await _cloudinaryService.UploadImageAsync(file, folder);
+                if (!string.IsNullOrWhiteSpace(uploadedUrl))
+                {
+                    results.Add(uploadedUrl);
+                }
+            }
+
+            if (results.Count == 0)
+            {
+                return StatusCode(500, "Upload ảnh lên Cloudinary thất bại.");
+            }
+
+            return Ok(new { urls = results, folder });
+        }
+
+        private static string Slugify(string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return string.Empty;
+            }
+
+            var normalized = value.Normalize(NormalizationForm.FormD);
+            var builder = new StringBuilder();
+
+            foreach (var ch in normalized)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(ch);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    builder.Append(ch);
+                }
+            }
+
+            var plain = builder.ToString().Normalize(NormalizationForm.FormC).ToLowerInvariant();
+            var slugBuilder = new StringBuilder();
+
+            foreach (var ch in plain)
+            {
+                if (char.IsLetterOrDigit(ch))
+                {
+                    slugBuilder.Append(ch);
+                }
+                else if (slugBuilder.Length > 0 && slugBuilder[^1] != '-')
+                {
+                    slugBuilder.Append('-');
+                }
+            }
+
+            return slugBuilder.ToString().Trim('-');
+        }
+    }
+}

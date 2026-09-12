@@ -1,0 +1,351 @@
+import { useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, Printer, Receipt } from "lucide-react";
+import { invoicesApi } from "../../api/admin/invoicesApi";
+import { bookingsApi } from "../../api/admin/bookingsApi";
+import { servicesApi } from "../../api/admin/servicesApi";
+import { formatVietnamDate, formatVietnamDateTime } from "../../utils/vietnamTime";
+import { openInvoicePrintWindow } from "../../utils/invoicePrint";
+
+const currencyFormatter = new Intl.NumberFormat("vi-VN");
+const formatCurrency = (value) => `${currencyFormatter.format(Number(value || 0))} đ`;
+
+const AdminInvoiceDetailPage = () => {
+  const navigate = useNavigate();
+  const { invoiceId } = useParams();
+
+  const invoiceQuery = useQuery({
+    queryKey: ["invoice", invoiceId],
+    queryFn: () => invoicesApi.getInvoiceById(invoiceId),
+    enabled: Boolean(invoiceId),
+  });
+
+  const invoice = invoiceQuery.data;
+
+  const bookingQuery = useQuery({
+    queryKey: ["booking", invoice?.bookingId],
+    queryFn: () => bookingsApi.getBookingById(invoice.bookingId),
+    enabled: Boolean(invoice?.bookingId),
+  });
+
+  const booking = bookingQuery.data;
+
+  const serviceUsagesQuery = useQuery({
+    queryKey: ["invoice-service-items", invoice?.detailId, invoice?.status, invoice?.createdAt, invoice?.totalServiceAmount],
+    queryFn: async () => {
+      const items = await servicesApi.getUsageHistory({
+        bookingDetailId: invoice.detailId,
+      });
+
+      // If the invoice is still in Paying or other open states (meaning not completed),
+      // we check the actual payment status directly from DB.
+      if (invoice.status !== "Completed") {
+        return items.map(item => ({
+          ...item,
+          isPaidBeforeCheckout: item.paymentStatus === "Paid"
+        }));
+      }
+
+      // If completed, ALL services in this room have been marked "Paid".
+      // We run the subset sum algorithm to match which items belong to this invoice's totalServiceAmount.
+      const targetAmount = Number(invoice.totalServiceAmount || 0);
+      const sortedItems = [...items].sort((a, b) => new Date(b.usedAt).getTime() - new Date(a.usedAt).getTime());
+
+      const checkoutItemIds = new Set();
+      let currentSum = 0;
+
+      for (const item of sortedItems) {
+        if (currentSum + item.lineTotal <= targetAmount) {
+          checkoutItemIds.add(item.id);
+          currentSum += item.lineTotal;
+        }
+        if (currentSum === targetAmount) break;
+      }
+
+      // If subset sum matched exactly, we tag them. Otherwise fallback to marking all as part of checkout.
+      const exactMatch = currentSum === targetAmount;
+      return items.map(item => ({
+        ...item,
+        isPaidBeforeCheckout: exactMatch ? !checkoutItemIds.has(item.id) : false
+      }));
+    },
+    enabled: Boolean(invoice?.detailId && invoice?.totalServiceAmount !== undefined),
+  });
+
+  const serviceItems = useMemo(() => serviceUsagesQuery.data || [], [serviceUsagesQuery.data]);
+
+  const roomLossDamageReportsQuery = useQuery({
+    queryKey: ["invoice-loss-damages", invoice?.detailId],
+    queryFn: () => invoicesApi.getLossDamagesByBookingDetail(invoice.detailId),
+    enabled: Boolean(invoice?.detailId),
+  });
+
+  const roomLossDamageReports = useMemo(() => {
+    return roomLossDamageReportsQuery.data || [];
+  }, [roomLossDamageReportsQuery.data]);
+
+  if (invoiceQuery.isLoading) {
+    return <div className="rounded-[2rem] bg-white p-8 text-center text-slate-500">Đang tải chi tiết hóa đơn...</div>;
+  }
+
+  if (!invoice) {
+    return (
+      <div className="rounded-[2rem] border border-rose-200 bg-rose-50 p-8 text-center text-rose-700">
+        Không tìm thấy hóa đơn cần xem.
+      </div>
+    );
+  }
+
+  const handlePrintInvoice = () => {
+    openInvoicePrintWindow({
+      invoice,
+      booking,
+      serviceItems,
+      lossDamageItems: roomLossDamageReports,
+      receiptDateText: invoice?.paidAt || invoice?.createdAt || invoice?.updatedAt
+        ? formatVietnamDateTime(invoice.paidAt || invoice.createdAt || invoice.updatedAt)
+        : "--",
+    });
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <button
+            type="button"
+            onClick={() => navigate("/admin/invoices")}
+            className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-2.5 text-sm font-bold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50"
+          >
+            <ArrowLeft size={16} />
+            Quay lại danh sách
+          </button>
+          <h1 className="mt-4 text-3xl font-black text-slate-900">Chi tiết hóa đơn</h1>
+          <p className="mt-2 text-sm font-medium text-slate-500">Bao gồm tiền phòng và các dịch vụ đã cộng khi checkout.</p>
+        </div>
+
+        <button
+          type="button"
+          onClick={handlePrintInvoice}
+          className="inline-flex items-center gap-2 rounded-2xl bg-sky-600 px-5 py-3 text-sm font-black text-white transition hover:bg-sky-700"
+        >
+          <Printer size={18} />
+          In hóa đơn
+        </button>
+      </div>
+
+      <div className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-slate-200">
+        <div className="flex flex-wrap items-start justify-between gap-6 border-b border-slate-100 pb-6">
+          <div className="flex items-center gap-4">
+            <div className="rounded-[1.5rem] bg-sky-100 p-4 text-sky-600">
+              <Receipt size={26} />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">Hóa đơn</p>
+              <h2 className="mt-2 text-3xl font-black text-slate-900">{invoice.code}</h2>
+            </div>
+          </div>
+
+          <div className="rounded-[1.5rem] bg-sky-50 px-5 py-4 text-right">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Trạng thái</p>
+            <p className="mt-2 text-2xl font-black text-sky-700">{invoice.status}</p>
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-[1.5rem] bg-slate-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Khách hàng</p>
+            <p className="mt-2 text-lg font-black text-slate-900">{invoice.guestName}</p>
+            <p className="mt-1 text-sm font-medium text-slate-500">Booking {invoice.bookingCode}</p>
+          </div>
+          <div className="rounded-[1.5rem] bg-slate-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Phòng</p>
+            <p className="mt-2 text-lg font-black text-slate-900">
+              Phòng {invoice.roomNumber} - {invoice.roomName}
+            </p>
+          </div>
+          <div className="rounded-[1.5rem] bg-slate-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Check-in</p>
+            <p className="mt-2 text-lg font-black text-slate-900">{formatVietnamDate(invoice.checkInDate)}</p>
+          </div>
+          <div className="rounded-[1.5rem] bg-slate-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Check-out</p>
+            <p className="mt-2 text-lg font-black text-slate-900">{formatVietnamDateTime(invoice.checkOutDate)}</p>
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-[1.75rem] border border-slate-200">
+          <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-4 border-b border-slate-200 bg-sky-50 px-5 py-4 text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+            <div>Hạng mục</div>
+            <div>Đơn giá</div>
+            <div>Số lượng</div>
+            <div className="text-right">Thành tiền</div>
+          </div>
+
+          {invoice.detailId ? (
+            <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-4 px-5 py-5 text-sm font-semibold text-slate-700">
+              <div>Tiền phòng {invoice.roomName}</div>
+              <div>{formatCurrency(invoice.roomRate)}</div>
+              <div>{invoice.stayedDays} ngày</div>
+              <div className="text-right font-black text-slate-900">{formatCurrency(invoice.totalRoomAmount || invoice.subtotal)}</div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-4 px-5 py-5 text-sm font-semibold text-slate-700">
+              <div>{invoice.roomName || "Đặt cọc Booking"}</div>
+              <div>{formatCurrency(invoice.finalTotal || invoice.totalAmount)}</div>
+              <div>1 lần</div>
+              <div className="text-right font-black text-slate-900">{formatCurrency(invoice.finalTotal || invoice.totalAmount)}</div>
+            </div>
+          )}
+
+          {serviceUsagesQuery.isLoading ? (
+            <div className="border-t border-slate-100 px-5 py-5 text-sm text-slate-500">Đang tải chi tiết dịch vụ...</div>
+          ) : serviceItems.length > 0 ? (
+            serviceItems.map((item) => {
+              const isPaidBefore = item.isPaidBeforeCheckout;
+              return (
+                <div
+                  key={item.id}
+                  className={`grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-4 border-t border-slate-100 px-5 py-5 text-sm font-semibold transition hover:bg-slate-50 ${isPaidBefore ? "opacity-60 bg-slate-50/50" : "text-slate-700"}`}
+                >
+                  <div className="flex flex-col">
+                    <span className={`font-semibold ${isPaidBefore ? "text-slate-400 line-through" : "text-slate-800"}`}>
+                      {item.serviceName}
+                    </span>
+                    {isPaidBefore && (
+                      <span className="w-fit mt-1 inline-flex items-center rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-500">
+                        Đã trả trước
+                      </span>
+                    )}
+                  </div>
+                  <div className={`font-medium ${isPaidBefore ? "text-slate-400 line-through" : "text-slate-600"}`}>{formatCurrency(item.unitPrice)}</div>
+                  <div className={`font-medium ${isPaidBefore ? "text-slate-400" : "text-slate-600"}`}>{item.quantity}</div>
+                  <div className={`text-right font-black ${isPaidBefore ? "text-slate-400 line-through" : "text-slate-900"}`}>
+                    {formatCurrency(item.lineTotal || item.quantity * item.unitPrice)}
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="border-t border-slate-100 px-5 py-5 text-sm text-slate-500">Không có dịch vụ nào trong hóa đơn này.</div>
+          )}
+
+          {roomLossDamageReports.length > 0 && (
+            <>
+              <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-4 border-t border-slate-200 bg-sky-50 px-5 py-4 text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+                <div>Vật tư thất thoát / hư hỏng</div>
+                <div>Đơn giá đền bù</div>
+                <div>Số lượng</div>
+                <div className="text-right">Thành tiền</div>
+              </div>
+              {roomLossDamageReports.map((item) => (
+                <div
+                  key={item.id}
+                  className="grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-4 border-t border-slate-100 px-5 py-5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                >
+                  <div>{item.equipmentName}</div>
+                  <div className="font-medium text-slate-600">{formatCurrency(item.unitPenalty)}</div>
+                  <div className="font-medium text-slate-600">{item.quantity}</div>
+                  <div className="text-right font-black text-slate-900">{formatCurrency(item.penaltyAmount)}</div>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
+
+        <div className="mt-6 ml-auto max-w-md space-y-3 rounded-[1.75rem] bg-gradient-to-br from-sky-700 via-sky-600 to-cyan-500 p-5 text-white">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-white/80">
+              {invoice.detailId ? "Tổng tiền phòng" : "Tổng tiền đặt cọc"}
+            </span>
+            <span className="font-bold">
+              {formatCurrency(invoice.totalRoomAmount || invoice.subtotal || (invoice.detailId ? 0 : invoice.finalTotal || invoice.totalAmount))}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-white/80">Tổng tiền dịch vụ</span>
+            <span className="font-bold">{formatCurrency(invoice.totalServiceAmount)}</span>
+          </div>
+          {Number(invoice.totalLossDamageAmount || 0) > 0 && (
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-white/80">Thất thoát hư hỏng</span>
+              <span className="font-bold">{formatCurrency(invoice.totalLossDamageAmount)}</span>
+            </div>
+          )}
+          {invoice.discountAmount > 0 && (
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-white/80">Voucher {invoice.voucherCode ? `(${invoice.voucherCode})` : ""}</span>
+              <span className="font-bold text-cyan-100">- {formatCurrency(invoice.discountAmount)}</span>
+            </div>
+          )}
+          {invoice.membershipDiscountAmount > 0 && (
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-white/80">Giảm giá Membership ({invoice.membershipTierName || `${invoice.membershipDiscountPercent}%`})</span>
+              <span className="font-bold text-cyan-100">- {formatCurrency(invoice.membershipDiscountAmount)}</span>
+            </div>
+          )}
+
+          {(() => {
+            const calculatedTotal = Math.max(0, (invoice.totalRoomAmount || invoice.subtotal || 0) + (invoice.totalServiceAmount || 0) + (invoice.totalLossDamageAmount || 0) - (invoice.discountAmount || 0) - (invoice.membershipDiscountAmount || 0));
+            const finalTotal = invoice.finalTotal || invoice.totalAmount || 0;
+            const depositDeducted = Math.max(0, calculatedTotal - finalTotal);
+            if (depositDeducted > 0) {
+              let depositPct = 0;
+              const detail = booking?.bookingDetails?.find((d) => d.id === invoice.detailId) || null;
+              if (detail && invoice.totalRoomAmount > 0) {
+                const checkIn = new Date(detail.checkInDate);
+                const checkOut = new Date(detail.checkOutDate);
+                if (!isNaN(checkIn.getTime()) && !isNaN(checkOut.getTime())) {
+                  const MS_PER_DAY = 1000 * 60 * 60 * 24;
+                  const diff = checkOut.getTime() - checkIn.getTime();
+                  const originalNights = Math.max(1, Math.ceil(diff / MS_PER_DAY));
+                  const originalSubtotal = invoice.roomRate * originalNights;
+                  
+                  const discountRate = invoice.discountAmount / invoice.totalRoomAmount;
+                  const originalVoucherDiscount = originalSubtotal * discountRate;
+                  
+                  const membershipDiscountRate = (invoice.membershipDiscountAmount || 0) / invoice.totalRoomAmount;
+                  const originalMembershipDiscount = originalSubtotal * membershipDiscountRate;
+                  
+                  const originalRoomTotalAfterDiscount = Math.max(0, originalSubtotal - originalVoucherDiscount - originalMembershipDiscount);
+                  if (originalRoomTotalAfterDiscount > 0) {
+                    const rawDepositPct = (depositDeducted / originalRoomTotalAfterDiscount) * 100;
+                    depositPct = [30, 40, 50, 100].reduce((prev, curr) => Math.abs(curr - rawDepositPct) < Math.abs(prev - rawDepositPct) ? curr : prev);
+                  }
+                }
+              }
+              if (depositPct === 0) {
+                const roomTotalAfterDiscount = Math.max(0, (invoice.totalRoomAmount || invoice.subtotal || 0) + (invoice.totalLossDamageAmount || 0) - (invoice.discountAmount || 0) - (invoice.membershipDiscountAmount || 0));
+                const rawDepositPct = roomTotalAfterDiscount > 0 ? (depositDeducted / roomTotalAfterDiscount) * 100 : 0;
+                depositPct = rawDepositPct <= 0 ? 0 : [30, 40, 50, 100].reduce((prev, curr) => Math.abs(curr - rawDepositPct) < Math.abs(prev - rawDepositPct) ? curr : prev);
+              }
+              return (
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-white/80">Trừ tiền cọc {depositPct > 0 ? `(${depositPct}%)` : ""}</span>
+                  <span className="font-bold text-cyan-100">- {formatCurrency(depositDeducted)}</span>
+                </div>
+              );
+            }
+            return null;
+          })()}
+
+          <div className="h-px bg-white/15" />
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-semibold text-white/80">Thực thu</span>
+            <span className="text-3xl font-black">{formatCurrency(invoice.finalTotal || invoice.totalAmount)}</span>
+          </div>
+        </div>
+
+        {invoice.notes ? (
+          <div className="mt-6 rounded-[1.5rem] bg-sky-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Ghi chú</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{invoice.notes}</p>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+export default AdminInvoiceDetailPage;

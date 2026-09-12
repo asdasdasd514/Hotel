@@ -1,0 +1,140 @@
+import React, { useEffect, useState } from "react";
+import { generateCode } from "../../../hooks/useVoucherData";
+import { RefreshCw } from "lucide-react";
+
+const VoucherForm = ({ initial = {}, onSubmit, onCancel }) => {
+  const [form, setForm] = useState({
+    code: "",
+    name: "",
+    discountType: "PERCENT",
+    discountValue: 0,
+    minBookingValue: null,
+    validFrom: "",
+    validTo: "",
+    usageLimit: null,
+    isPrivate: false,
+    voucherType: "Booking",
+    targetUserId: null,
+    ...initial,
+  });
+
+  useEffect(() => {
+    if (!initial || !initial.code) {
+      setForm((s) => ({ ...s, code: generateCode() }));
+    }
+  }, []);
+
+  const onChange = (k, v) => setForm((s) => ({ ...s, [k]: v }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    const payload = { ...form };
+    onSubmit(payload);
+  };
+
+  return (
+    <form onSubmit={submit} className="space-y-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div className="lg:col-span-2">
+          <label className="text-[11px] font-bold text-gray-400">Tên Voucher</label>
+          <input 
+            value={form.name || ''} 
+            onChange={(e) => onChange('name', e.target.value)} 
+            className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" 
+            placeholder="Ví dụ: Voucher Chào Hè 2024"
+          />
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Mã Voucher</label>
+          <div className="flex items-center gap-2 mt-1">
+            <input 
+              value={form.code} 
+              onChange={(e) => onChange('code', e.target.value)} 
+              className="flex-1 p-3 rounded-2xl bg-gray-50 text-sm font-bold border-0 focus:ring-2 focus:ring-blue-100" 
+              placeholder="VCHR-..."
+            />
+            <button type="button" onClick={() => onChange('code', generateCode())} className="p-2 bg-white rounded-xl border hover:bg-gray-50 transition-colors">
+              <RefreshCw size={16} />
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Loại ưu đãi</label>
+          <select value={form.discountType} onChange={(e) => onChange('discountType', e.target.value)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1">
+            <option value="PERCENT">Phần trăm</option>
+            <option value="AMOUNT">Số tiền</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Loại Voucher</label>
+          <select value={form.voucherType || "Booking"} onChange={(e) => onChange('voucherType', e.target.value)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1">
+            <option value="Booking">Đặt phòng</option>
+            <option value="Service">Dịch vụ</option>
+            <option value="Birthday">Sinh nhật</option>
+          </select>
+        </div>
+
+        {form.voucherType === "Birthday" && (
+          <div>
+            <label className="text-[11px] font-bold text-gray-400">ID người nhận cụ thể (Nếu có)</label>
+            <input 
+              type="number" 
+              value={form.targetUserId ?? ''} 
+              onChange={(e) => onChange('targetUserId', e.target.value ? parseInt(e.target.value) : null)} 
+              className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" 
+              placeholder="VD: 5 (để trống nếu gửi hàng loạt)"
+            />
+          </div>
+        )}
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Giá trị ưu đãi</label>
+          <input type="number" value={form.discountValue} onChange={(e) => onChange('discountValue', e.target.value)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" />
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Giá trị tối thiểu</label>
+          <input type="number" value={form.minBookingValue ?? ''} onChange={(e) => onChange('minBookingValue', e.target.value || null)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" />
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Bắt đầu</label>
+          <input type="date" value={form.validFrom ? form.validFrom.split('T')[0] : form.validFrom} onChange={(e) => onChange('validFrom', e.target.value)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" />
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Kết thúc</label>
+          <input type="date" value={form.validTo ? form.validTo.split('T')[0] : form.validTo} onChange={(e) => onChange('validTo', e.target.value)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" />
+        </div>
+
+        <div>
+          <label className="text-[11px] font-bold text-gray-400">Giới hạn sử dụng</label>
+          <input type="number" value={form.usageLimit ?? ''} onChange={(e) => onChange('usageLimit', e.target.value || null)} className="w-full p-3 rounded-2xl bg-gray-50 text-sm font-bold mt-1" />
+        </div>
+
+        <div className="lg:col-span-2">
+          <label className="text-[11px] font-bold text-gray-400">Mô tả</label>
+          <textarea 
+            value={form.description || ''} 
+            onChange={(e) => onChange('description', e.target.value)} 
+            className="w-full p-4 rounded-2xl bg-gray-50 text-sm font-bold mt-1 min-h-[160px] border-0 focus:ring-2 focus:ring-blue-100 transition-all"
+            placeholder="Mô tả ưu đãi của voucher..."
+          />
+        </div>
+
+
+        {/* Private checkbox added above. Sending handled separately. */}
+      </div>
+
+      <div className="flex justify-end gap-2 mt-2">
+        <button type="button" onClick={onCancel} className="px-6 py-2 rounded-2xl bg-white border">Hủy</button>
+        <button type="submit" className="px-6 py-2 rounded-2xl bg-[#0085FF] text-white font-black">Lưu</button>
+      </div>
+    </form>
+  );
+};
+
+export default VoucherForm;
