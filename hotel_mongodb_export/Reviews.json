@@ -1,0 +1,1698 @@
+[
+  {
+    "_id": 1,
+    "UserId": 2,
+    "RoomTypeId": 1,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phòng rất sạch sẽ, nhân viên phục vụ tận tình.",
+    "CreatedAt": {
+      "$date": "2026-05-03T17:27:59.8866667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 2,
+    "UserId": 1,
+    "RoomTypeId": 1,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Tốt.",
+    "CreatedAt": {
+      "$date": "2026-05-03T17:28:45.7900000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 3,
+    "UserId": 3,
+    "RoomTypeId": 1,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phòng rất tốt.",
+    "CreatedAt": {
+      "$date": "2026-05-03T17:30:11.8566667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 4,
+    "UserId": 9,
+    "RoomTypeId": 1,
+    "Rating": 4.0,
+    "AmenitiesRating": 4,
+    "StaffRating": 3,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phòng rất sạch sẽ, nhân viên phục vụ tận tình.",
+    "CreatedAt": {
+      "$date": "2026-05-03T17:48:30.8000000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 5,
+    "UserId": 9,
+    "RoomTypeId": 1,
+    "Rating": 4.0,
+    "AmenitiesRating": 4,
+    "StaffRating": 3,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phòng rất sạch sẽ.",
+    "CreatedAt": {
+      "$date": "2026-05-08T17:48:30.8000000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 6,
+    "UserId": 9,
+    "RoomTypeId": 1,
+    "Rating": 4.0,
+    "AmenitiesRating": 4,
+    "StaffRating": 3,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phòng rất sạch sẽ.",
+    "CreatedAt": {
+      "$date": "2026-05-08T17:48:30.8000000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 307,
+    "UserId": 1,
+    "RoomTypeId": 1,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2025-11-25T09:42:47.4433333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 308,
+    "UserId": 2,
+    "RoomTypeId": 1,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2025-05-09T09:42:47.4966667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 309,
+    "UserId": 3,
+    "RoomTypeId": 1,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-04-28T09:42:47.5066667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 310,
+    "UserId": 4,
+    "RoomTypeId": 1,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-09-14T09:42:47.5166667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 311,
+    "UserId": 6,
+    "RoomTypeId": 1,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-06-16T09:42:47.5300000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 312,
+    "UserId": 7,
+    "RoomTypeId": 1,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-06-04T09:42:47.5366667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 313,
+    "UserId": 9,
+    "RoomTypeId": 1,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-10-07T09:42:47.5400000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 314,
+    "UserId": 1,
+    "RoomTypeId": 1,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-08-22T09:42:47.5500000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 315,
+    "UserId": 2,
+    "RoomTypeId": 1,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2026-02-28T09:42:47.5600000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 316,
+    "UserId": 3,
+    "RoomTypeId": 1,
+    "Rating": 1.25,
+    "AmenitiesRating": 1,
+    "StaffRating": 1,
+    "CleanlinessRating": 2,
+    "LocationRating": 1,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2025-08-23T09:42:47.5700000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 317,
+    "UserId": 4,
+    "RoomTypeId": 2,
+    "Rating": 4.25,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2025-05-23T09:42:47.6033333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 318,
+    "UserId": 6,
+    "RoomTypeId": 2,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2025-09-19T09:42:47.6066667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 319,
+    "UserId": 7,
+    "RoomTypeId": 2,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-09-21T09:42:47.6133333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 320,
+    "UserId": 9,
+    "RoomTypeId": 2,
+    "Rating": 4.75,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2026-01-05T09:42:47.6166667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 321,
+    "UserId": 1,
+    "RoomTypeId": 2,
+    "Rating": 4.25,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-12-17T09:42:47.6233333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 322,
+    "UserId": 2,
+    "RoomTypeId": 2,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-04-11T09:42:47.6233333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 323,
+    "UserId": 3,
+    "RoomTypeId": 2,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-06-28T09:42:47.6266667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 324,
+    "UserId": 4,
+    "RoomTypeId": 2,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-04-23T09:42:47.6300000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 325,
+    "UserId": 6,
+    "RoomTypeId": 2,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2026-04-28T09:42:47.6333333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 326,
+    "UserId": 7,
+    "RoomTypeId": 2,
+    "Rating": 1.75,
+    "AmenitiesRating": 2,
+    "StaffRating": 2,
+    "CleanlinessRating": 2,
+    "LocationRating": 1,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2026-02-04T09:42:47.6366667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 327,
+    "UserId": 9,
+    "RoomTypeId": 3,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2026-02-02T09:42:47.6400000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 328,
+    "UserId": 1,
+    "RoomTypeId": 3,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2025-10-02T09:42:47.6466667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 329,
+    "UserId": 2,
+    "RoomTypeId": 3,
+    "Rating": 4.75,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2026-03-04T09:42:47.6500000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 330,
+    "UserId": 3,
+    "RoomTypeId": 3,
+    "Rating": 5.0,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2026-04-13T09:42:47.6566667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 331,
+    "UserId": 4,
+    "RoomTypeId": 3,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-07-13T09:42:47.6566667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 332,
+    "UserId": 6,
+    "RoomTypeId": 3,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-10-17T09:42:47.6600000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 333,
+    "UserId": 7,
+    "RoomTypeId": 3,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-10-22T09:42:47.6633333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 334,
+    "UserId": 9,
+    "RoomTypeId": 3,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-11-26T09:42:47.6700000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 335,
+    "UserId": 1,
+    "RoomTypeId": 3,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2026-03-21T09:42:47.6700000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 336,
+    "UserId": 2,
+    "RoomTypeId": 3,
+    "Rating": 1.0,
+    "AmenitiesRating": 1,
+    "StaffRating": 1,
+    "CleanlinessRating": 1,
+    "LocationRating": 1,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2026-01-15T09:42:47.6733333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 337,
+    "UserId": 3,
+    "RoomTypeId": 4,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2025-09-18T09:42:47.6766667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 338,
+    "UserId": 4,
+    "RoomTypeId": 4,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2025-12-05T09:42:47.6833333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 339,
+    "UserId": 6,
+    "RoomTypeId": 4,
+    "Rating": 4.0,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2026-05-01T09:42:47.6866667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 340,
+    "UserId": 7,
+    "RoomTypeId": 4,
+    "Rating": 4.75,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-09-01T09:42:47.6900000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 341,
+    "UserId": 9,
+    "RoomTypeId": 4,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-12-05T09:42:47.6933333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 342,
+    "UserId": 1,
+    "RoomTypeId": 4,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-11-12T09:42:47.6966667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 343,
+    "UserId": 2,
+    "RoomTypeId": 4,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-05-13T09:42:47.7000000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 344,
+    "UserId": 3,
+    "RoomTypeId": 4,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-12-06T09:42:47.7033333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 345,
+    "UserId": 4,
+    "RoomTypeId": 4,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2026-05-03T09:42:47.7066667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 346,
+    "UserId": 6,
+    "RoomTypeId": 4,
+    "Rating": 2.0,
+    "AmenitiesRating": 2,
+    "StaffRating": 2,
+    "CleanlinessRating": 2,
+    "LocationRating": 2,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2025-04-21T09:42:47.7066667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 347,
+    "UserId": 7,
+    "RoomTypeId": 5,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2026-01-19T09:42:47.7133333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 348,
+    "UserId": 9,
+    "RoomTypeId": 5,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2025-12-30T09:42:47.7166667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 349,
+    "UserId": 1,
+    "RoomTypeId": 5,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2026-03-19T09:42:47.7200000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 350,
+    "UserId": 2,
+    "RoomTypeId": 5,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-06-21T09:42:47.7200000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 351,
+    "UserId": 3,
+    "RoomTypeId": 5,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-05-16T09:42:47.7233333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 352,
+    "UserId": 4,
+    "RoomTypeId": 5,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-05-24T09:42:47.7233333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 353,
+    "UserId": 6,
+    "RoomTypeId": 5,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2026-01-11T09:42:47.7266667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 354,
+    "UserId": 7,
+    "RoomTypeId": 5,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-04-17T09:42:47.7300000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 355,
+    "UserId": 9,
+    "RoomTypeId": 5,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2025-10-31T09:42:47.7333333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 356,
+    "UserId": 1,
+    "RoomTypeId": 5,
+    "Rating": 1.75,
+    "AmenitiesRating": 2,
+    "StaffRating": 2,
+    "CleanlinessRating": 1,
+    "LocationRating": 2,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2025-08-18T09:42:47.7366667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 357,
+    "UserId": 2,
+    "RoomTypeId": 6,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2025-06-15T09:42:47.7366667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 358,
+    "UserId": 3,
+    "RoomTypeId": 6,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2026-01-30T09:42:47.7400000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 359,
+    "UserId": 4,
+    "RoomTypeId": 6,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-10-09T09:42:47.7433333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 360,
+    "UserId": 6,
+    "RoomTypeId": 6,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-09-27T09:42:47.7466667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 361,
+    "UserId": 7,
+    "RoomTypeId": 6,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2026-02-04T09:42:47.7466667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 362,
+    "UserId": 9,
+    "RoomTypeId": 6,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2026-04-05T09:42:47.7500000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 363,
+    "UserId": 1,
+    "RoomTypeId": 6,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2026-01-15T09:42:47.7533333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 364,
+    "UserId": 2,
+    "RoomTypeId": 6,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-08-31T09:42:47.7533333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 365,
+    "UserId": 3,
+    "RoomTypeId": 6,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2026-03-10T09:42:47.7566667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 366,
+    "UserId": 4,
+    "RoomTypeId": 6,
+    "Rating": 1.25,
+    "AmenitiesRating": 1,
+    "StaffRating": 1,
+    "CleanlinessRating": 1,
+    "LocationRating": 2,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2026-01-15T09:42:47.7600000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 367,
+    "UserId": 6,
+    "RoomTypeId": 7,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2026-02-19T09:42:47.7633333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 368,
+    "UserId": 7,
+    "RoomTypeId": 7,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2026-04-14T09:42:47.7666667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 369,
+    "UserId": 9,
+    "RoomTypeId": 7,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-05-15T09:42:47.7666667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 370,
+    "UserId": 1,
+    "RoomTypeId": 7,
+    "Rating": 4.75,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-11-25T09:42:47.7666667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 371,
+    "UserId": 2,
+    "RoomTypeId": 7,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-10-22T09:42:47.7700000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 372,
+    "UserId": 3,
+    "RoomTypeId": 7,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-07-23T09:42:47.7700000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 373,
+    "UserId": 4,
+    "RoomTypeId": 7,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-05-09T09:42:47.7733333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 374,
+    "UserId": 6,
+    "RoomTypeId": 7,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-08-15T09:42:47.7766667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 375,
+    "UserId": 7,
+    "RoomTypeId": 7,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2026-02-11T09:42:47.7766667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 376,
+    "UserId": 9,
+    "RoomTypeId": 7,
+    "Rating": 1.0,
+    "AmenitiesRating": 1,
+    "StaffRating": 1,
+    "CleanlinessRating": 1,
+    "LocationRating": 1,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2026-04-17T09:42:47.7766667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 377,
+    "UserId": 1,
+    "RoomTypeId": 8,
+    "Rating": 4.75,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2025-09-17T09:42:47.7833333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 378,
+    "UserId": 2,
+    "RoomTypeId": 8,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2025-05-02T09:42:47.7833333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 379,
+    "UserId": 3,
+    "RoomTypeId": 8,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-04-14T09:42:47.7866667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 380,
+    "UserId": 4,
+    "RoomTypeId": 8,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-11-19T09:42:47.7866667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 381,
+    "UserId": 6,
+    "RoomTypeId": 8,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2026-02-09T09:42:47.7900000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 382,
+    "UserId": 7,
+    "RoomTypeId": 8,
+    "Rating": 4.5,
+    "AmenitiesRating": 4,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-10-15T09:42:47.7900000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 383,
+    "UserId": 9,
+    "RoomTypeId": 8,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2026-01-12T09:42:47.7933333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 384,
+    "UserId": 1,
+    "RoomTypeId": 8,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-10-08T09:42:47.7933333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 385,
+    "UserId": 2,
+    "RoomTypeId": 8,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2025-10-03T09:42:47.7933333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 386,
+    "UserId": 3,
+    "RoomTypeId": 8,
+    "Rating": 1.75,
+    "AmenitiesRating": 2,
+    "StaffRating": 2,
+    "CleanlinessRating": 1,
+    "LocationRating": 2,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2026-03-13T09:42:47.7966667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 387,
+    "UserId": 4,
+    "RoomTypeId": 9,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2026-03-13T09:42:47.8000000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 388,
+    "UserId": 6,
+    "RoomTypeId": 9,
+    "Rating": 5.0,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2026-02-25T09:42:47.8033333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 389,
+    "UserId": 7,
+    "RoomTypeId": 9,
+    "Rating": 4.25,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-12-22T09:42:47.8033333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 390,
+    "UserId": 9,
+    "RoomTypeId": 9,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-11-07T09:42:47.8066667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 391,
+    "UserId": 1,
+    "RoomTypeId": 9,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2026-05-02T09:42:47.8100000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 392,
+    "UserId": 2,
+    "RoomTypeId": 9,
+    "Rating": 4.25,
+    "AmenitiesRating": 4,
+    "StaffRating": 4,
+    "CleanlinessRating": 5,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2025-10-15T09:42:47.8100000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 393,
+    "UserId": 3,
+    "RoomTypeId": 9,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-06-06T09:42:47.8133333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 394,
+    "UserId": 4,
+    "RoomTypeId": 9,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2025-12-15T09:42:47.8133333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 395,
+    "UserId": 6,
+    "RoomTypeId": 9,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2025-12-31T09:42:47.8166667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 396,
+    "UserId": 7,
+    "RoomTypeId": 9,
+    "Rating": 1.25,
+    "AmenitiesRating": 1,
+    "StaffRating": 2,
+    "CleanlinessRating": 1,
+    "LocationRating": 1,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2025-11-27T09:42:47.8166667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 397,
+    "UserId": 9,
+    "RoomTypeId": 10,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Phong rat dep, sach se, nhan vien than thien!",
+    "CreatedAt": {
+      "$date": "2025-10-17T09:42:47.8233333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 398,
+    "UserId": 1,
+    "RoomTypeId": 10,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Tuyet voi, rat hai long voi chat luong dich vu!",
+    "CreatedAt": {
+      "$date": "2026-01-17T09:42:47.8266667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 399,
+    "UserId": 2,
+    "RoomTypeId": 10,
+    "Rating": 5.0,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Rat hai long, se quay lai lan sau. Dich vu hoan hao!",
+    "CreatedAt": {
+      "$date": "2025-05-10T09:42:47.8266667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 400,
+    "UserId": 3,
+    "RoomTypeId": 10,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 4,
+    "CleanlinessRating": 4,
+    "LocationRating": 5,
+    "Comment": "Phong rong, tien nghi day du, view dep tuyet voi",
+    "CreatedAt": {
+      "$date": "2025-04-15T09:42:47.8300000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 401,
+    "UserId": 4,
+    "RoomTypeId": 10,
+    "Rating": 5.0,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 5,
+    "LocationRating": 5,
+    "Comment": "Dich vu tuyet voi, nhan vien nhiet tinh va chu dao",
+    "CreatedAt": {
+      "$date": "2025-04-10T09:42:47.8333333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 402,
+    "UserId": 6,
+    "RoomTypeId": 10,
+    "Rating": 4.5,
+    "AmenitiesRating": 5,
+    "StaffRating": 5,
+    "CleanlinessRating": 4,
+    "LocationRating": 4,
+    "Comment": "Trai nghiem tuyet voi, phong sach se va thoang mat",
+    "CreatedAt": {
+      "$date": "2026-04-30T09:42:47.8333333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 403,
+    "UserId": 7,
+    "RoomTypeId": 10,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Phong on, dich vu can cai thien them",
+    "CreatedAt": {
+      "$date": "2025-04-10T09:42:47.8366667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 404,
+    "UserId": 9,
+    "RoomTypeId": 10,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Binh thuong, khong co gi dac biet lam",
+    "CreatedAt": {
+      "$date": "2026-02-10T09:42:47.8366667"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 405,
+    "UserId": 1,
+    "RoomTypeId": 10,
+    "Rating": 3.0,
+    "AmenitiesRating": 3,
+    "StaffRating": 3,
+    "CleanlinessRating": 3,
+    "LocationRating": 3,
+    "Comment": "Tam duoc nhung gia hoi cao so voi chat luong",
+    "CreatedAt": {
+      "$date": "2025-07-15T09:42:47.8500000"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  },
+  {
+    "_id": 406,
+    "UserId": 2,
+    "RoomTypeId": 10,
+    "Rating": 1.25,
+    "AmenitiesRating": 1,
+    "StaffRating": 2,
+    "CleanlinessRating": 1,
+    "LocationRating": 1,
+    "Comment": "Phong khong nhu mo ta, that vong voi dich vu",
+    "CreatedAt": {
+      "$date": "2025-09-24T09:42:47.8533333"
+    },
+    "Status": true,
+    "BookingDetailId": null
+  }
+]

@@ -1,0 +1,626 @@
+[
+  {
+    "_id": 313,
+    "RoomId": 1,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 314,
+    "RoomId": 1,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "8000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Smart TV Samsung 43 inch",
+    "EquipmentId": 1
+  },
+  {
+    "_id": 315,
+    "RoomId": 1,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "30000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bánh Oreo 133g",
+    "EquipmentId": 20
+  },
+  {
+    "_id": 316,
+    "RoomId": 1,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "80000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Thảm chùi chân",
+    "EquipmentId": 13
+  },
+  {
+    "_id": 317,
+    "RoomId": 1,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "3000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bàn làm việc + Ghế đệm",
+    "EquipmentId": 9
+  },
+  {
+    "_id": 318,
+    "RoomId": 1,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "600000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Máy sấy tóc Panasonic",
+    "EquipmentId": 4
+  },
+  {
+    "_id": 320,
+    "RoomId": 23,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "600000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Máy sấy tóc Panasonic",
+    "EquipmentId": 4
+  },
+  {
+    "_id": 321,
+    "RoomId": 23,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "3000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bàn làm việc + Ghế đệm",
+    "EquipmentId": 9
+  },
+  {
+    "_id": 322,
+    "RoomId": 23,
+    "Quantity": 4,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 323,
+    "RoomId": 23,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "30000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bánh Oreo 133g",
+    "EquipmentId": 20
+  },
+  {
+    "_id": 324,
+    "RoomId": 23,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "25000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Mì ly Omachi",
+    "EquipmentId": 19
+  },
+  {
+    "_id": 325,
+    "RoomId": 23,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "8000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Smart TV Samsung 43 inch",
+    "EquipmentId": 1
+  },
+  {
+    "_id": 326,
+    "RoomId": 23,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "80000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Thảm chùi chân",
+    "EquipmentId": 13
+  },
+  {
+    "_id": 327,
+    "RoomId": 2,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "250000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Gối tựa lưng / Gối ngủ",
+    "EquipmentId": 15
+  },
+  {
+    "_id": 328,
+    "RoomId": 2,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 329,
+    "RoomId": 2,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "25000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Mì ly Omachi",
+    "EquipmentId": 19
+  },
+  {
+    "_id": 330,
+    "RoomId": 1,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 331,
+    "RoomId": 1,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "35000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bia Heineken 330ml",
+    "EquipmentId": 18
+  },
+  {
+    "_id": 332,
+    "RoomId": 1,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "15000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Giường King Size 2m x 2m2",
+    "EquipmentId": 6
+  },
+  {
+    "_id": 333,
+    "RoomId": 13,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "15000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Giường King Size 2m x 2m2",
+    "EquipmentId": 6
+  },
+  {
+    "_id": 334,
+    "RoomId": 13,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "80000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Thảm chùi chân",
+    "EquipmentId": 13
+  },
+  {
+    "_id": 335,
+    "RoomId": 13,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "30000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bánh Oreo 133g",
+    "EquipmentId": 20
+  },
+  {
+    "_id": 336,
+    "RoomId": 13,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "3000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bàn làm việc + Ghế đệm",
+    "EquipmentId": 9
+  },
+  {
+    "_id": 337,
+    "RoomId": 13,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "35000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bia Heineken 330ml",
+    "EquipmentId": 18
+  },
+  {
+    "_id": 338,
+    "RoomId": 13,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "8000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Smart TV Samsung 43 inch",
+    "EquipmentId": 1
+  },
+  {
+    "_id": 339,
+    "RoomId": 13,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 340,
+    "RoomId": 13,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 341,
+    "RoomId": 13,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "600000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Máy sấy tóc Panasonic",
+    "EquipmentId": 4
+  },
+  {
+    "_id": 342,
+    "RoomId": 14,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "3000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bàn làm việc + Ghế đệm",
+    "EquipmentId": 9
+  },
+  {
+    "_id": 343,
+    "RoomId": 14,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 344,
+    "RoomId": 14,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 345,
+    "RoomId": 14,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "30000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bánh Oreo 133g",
+    "EquipmentId": 20
+  },
+  {
+    "_id": 346,
+    "RoomId": 14,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "8000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Smart TV Samsung 43 inch",
+    "EquipmentId": 1
+  },
+  {
+    "_id": 347,
+    "RoomId": 14,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "80000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Thảm chùi chân",
+    "EquipmentId": 13
+  },
+  {
+    "_id": 348,
+    "RoomId": 14,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "35000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bia Heineken 330ml",
+    "EquipmentId": 18
+  },
+  {
+    "_id": 349,
+    "RoomId": 14,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "15000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Giường King Size 2m x 2m2",
+    "EquipmentId": 6
+  },
+  {
+    "_id": 350,
+    "RoomId": 16,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "600000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Máy sấy tóc Panasonic",
+    "EquipmentId": 4
+  },
+  {
+    "_id": 351,
+    "RoomId": 16,
+    "Quantity": 3,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 352,
+    "RoomId": 16,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "8000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Smart TV Samsung 43 inch",
+    "EquipmentId": 1
+  },
+  {
+    "_id": 353,
+    "RoomId": 16,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "80000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Thảm chùi chân",
+    "EquipmentId": 13
+  },
+  {
+    "_id": 354,
+    "RoomId": 16,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "30000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bánh Oreo 133g",
+    "EquipmentId": 20
+  },
+  {
+    "_id": 355,
+    "RoomId": 16,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "35000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bia Heineken 330ml",
+    "EquipmentId": 18
+  },
+  {
+    "_id": 356,
+    "RoomId": 16,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 357,
+    "RoomId": 4,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "3000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bàn làm việc + Ghế đệm",
+    "EquipmentId": 9
+  },
+  {
+    "_id": 358,
+    "RoomId": 4,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "80000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Thảm chùi chân",
+    "EquipmentId": 13
+  },
+  {
+    "_id": 359,
+    "RoomId": 4,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "8000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Smart TV Samsung 43 inch",
+    "EquipmentId": 1
+  },
+  {
+    "_id": 360,
+    "RoomId": 4,
+    "Quantity": 5,
+    "PriceIfLost": {
+      "$numberDecimal": "30000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bánh Oreo 133g",
+    "EquipmentId": 20
+  },
+  {
+    "_id": 361,
+    "RoomId": 4,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "35000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Bia Heineken 330ml",
+    "EquipmentId": 18
+  },
+  {
+    "_id": 362,
+    "RoomId": 4,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "15000000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Giường King Size 2m x 2m2",
+    "EquipmentId": 6
+  },
+  {
+    "_id": 363,
+    "RoomId": 4,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 364,
+    "RoomId": 4,
+    "Quantity": 1,
+    "PriceIfLost": {
+      "$numberDecimal": "50000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Khăn mặt cotton 30x30cm",
+    "EquipmentId": 12
+  },
+  {
+    "_id": 365,
+    "RoomId": 4,
+    "Quantity": 2,
+    "PriceIfLost": {
+      "$numberDecimal": "600000.00"
+    },
+    "Note": null,
+    "IsActive": true,
+    "ItemType": "Máy sấy tóc Panasonic",
+    "EquipmentId": 4
+  }
+]

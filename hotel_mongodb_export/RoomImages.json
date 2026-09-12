@@ -1,0 +1,158 @@
+[
+  {
+    "_id": 6,
+    "RoomTypeId": 4,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225257/home/room/deluxe-ocean-view/vwcxnrjge3gyf7m5cjl6.jpg",
+    "IsPrimary": true
+  },
+  {
+    "_id": 7,
+    "RoomTypeId": 8,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225324/home/room/executive-suite/xt90qolnenyvfeynqurq.jpg",
+    "IsPrimary": true
+  },
+  {
+    "_id": 8,
+    "RoomTypeId": 6,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225603/home/room/family-suite/w2tufpd5kyrkr7vey8lt.webp",
+    "IsPrimary": true
+  },
+  {
+    "_id": 9,
+    "RoomTypeId": 7,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225631/home/room/junior-suite/d019jntopy0uv6gdkhxr.jpg",
+    "IsPrimary": true
+  },
+  {
+    "_id": 10,
+    "RoomTypeId": 5,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225740/home/room/premium-deluxe/nhagrzqtquyz8ckbcjow.webp",
+    "IsPrimary": true
+  },
+  {
+    "_id": 12,
+    "RoomTypeId": 2,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225839/home/room/standard-double/dyujhpomj46jaxpblruu.jpg",
+    "IsPrimary": true
+  },
+  {
+    "_id": 13,
+    "RoomTypeId": 10,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225879/home/room/royal-villa/oip63woihevf2zmvhdm5.jpg",
+    "IsPrimary": true
+  },
+  {
+    "_id": 14,
+    "RoomTypeId": 9,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225918/home/room/presidential-suite/nsyoyeqtqjmlzz3ukfzp.jpg",
+    "IsPrimary": true
+  },
+  {
+    "_id": 15,
+    "RoomTypeId": 3,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225958/home/room/superior-city-view/dljgrdroqatg4iegio7r.webp",
+    "IsPrimary": true
+  },
+  {
+    "_id": 50,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1775225803/home/room/standard-single/mg25pyo1xs6xwyfzat93.webp",
+    "IsPrimary": true
+  },
+  {
+    "_id": 51,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718899/home/room/standard-single/dkhrwdh8wwhucbpky1w3.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 52,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718901/home/room/standard-single/ozwllk5v1wszoaw2yk3j.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 53,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718904/home/room/standard-single/ap1zbogic75otsrp0ggj.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 54,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718906/home/room/standard-single/lqqzdceklhfgbgq95w1f.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 55,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718908/home/room/standard-single/mn2328dz1aatxwwtg8rn.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 56,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718911/home/room/standard-single/zzuwayusd6i6plqqkvu4.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 57,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718913/home/room/standard-single/bu11pwnbe4v8ayovfwyb.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 58,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718915/home/room/standard-single/xpug8ojhjeesw4bpwkjw.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 59,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718917/home/room/standard-single/vma8t6obvjogiyd9wuku.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 60,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718919/home/room/standard-single/g8vr9mklei5pmurvqaud.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 61,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718921/home/room/standard-single/uy9vk3zshfmwzh9vi3ju.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 62,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718923/home/room/standard-single/wyt13t5mrjemynlztslc.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 63,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718926/home/room/standard-single/w31dhuscpu3wwsloiuik.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 64,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718928/home/room/standard-single/iccajusobzf92tl7nw6z.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 65,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718930/home/room/standard-single/hxqkqdzrlzcf8n5wmtea.jpg",
+    "IsPrimary": false
+  },
+  {
+    "_id": 66,
+    "RoomTypeId": 1,
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777718932/home/room/standard-single/pwbjwbmcqpwihgx8rxox.jpg",
+    "IsPrimary": false
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "_id": 1,
+    "EquipmentId": 10,
+    "ActionType": "IMPORT",
+    "QuantityChanged": 14,
+    "PreviousQuantity": 495,
+    "NewQuantity": 509,
+    "Note": "Nhập thêm vật tư",
+    "CreatedAt": {
+      "$date": "2026-05-14T23:40:27.5863588"
+    },
+    "CreatedById": null
+  },
+  {
+    "_id": 2,
+    "EquipmentId": 10,
+    "ActionType": "IMPORT",
+    "QuantityChanged": 41,
+    "PreviousQuantity": 509,
+    "NewQuantity": 550,
+    "Note": "Nhập thêm vật tư",
+    "CreatedAt": {
+      "$date": "2026-05-16T02:12:15.0281292"
+    },
+    "CreatedById": null
+  },
+  {
+    "_id": 3,
+    "EquipmentId": 12,
+    "ActionType": "IMPORT",
+    "QuantityChanged": 50,
+    "PreviousQuantity": 250,
+    "NewQuantity": 300,
+    "Note": "Nhập thêm vật tư",
+    "CreatedAt": {
+      "$date": "2026-05-17T12:04:13.6826406"
+    },
+    "CreatedById": null
+  }
+]

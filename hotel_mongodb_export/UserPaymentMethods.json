@@ -1,0 +1,41 @@
+[
+  {
+    "_id": 3,
+    "UserId": 9,
+    "MethodType": "Card",
+    "Provider": "American Express",
+    "Last4Digits": 1231,
+    "ExpiryDate": "12/27",
+    "CardHolderName": "THAI",
+    "IsDefault": false,
+    "CreatedAt": {
+      "$date": "2026-05-13T10:31:00.9601948"
+    }
+  },
+  {
+    "_id": 4,
+    "UserId": 9,
+    "MethodType": "Card",
+    "Provider": "Visa",
+    "Last4Digits": 3123,
+    "ExpiryDate": "12/40",
+    "CardHolderName": "DUY THÁI",
+    "IsDefault": false,
+    "CreatedAt": {
+      "$date": "2026-05-13T10:39:45.0704391"
+    }
+  },
+  {
+    "_id": 5,
+    "UserId": 9,
+    "MethodType": "Bank",
+    "Provider": "MB Bank",
+    "Last4Digits": 1234432125,
+    "ExpiryDate": "",
+    "CardHolderName": "VŨ DUY THÁI",
+    "IsDefault": true,
+    "CreatedAt": {
+      "$date": "2026-05-13T10:40:58.8323156"
+    }
+  }
+]

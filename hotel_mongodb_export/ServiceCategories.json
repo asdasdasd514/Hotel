@@ -1,0 +1,38 @@
+[
+  {
+    "_id": 1,
+    "Name": "Đồ ăn & Thức uống",
+    "IconUrl": "utensils",
+    "Status": true
+  },
+  {
+    "_id": 2,
+    "Name": "Spa",
+    "IconUrl": "spa",
+    "Status": true
+  },
+  {
+    "_id": 3,
+    "Name": "Di Chuyển",
+    "IconUrl": "motorcycle",
+    "Status": true
+  },
+  {
+    "_id": 4,
+    "Name": "Trải nghiệm",
+    "IconUrl": "map-location-dot",
+    "Status": true
+  },
+  {
+    "_id": 5,
+    "Name": "Tour Du Lịch",
+    "IconUrl": "car",
+    "Status": true
+  },
+  {
+    "_id": 8,
+    "Name": "Sự Kiện",
+    "IconUrl": "ticket",
+    "Status": true
+  }
+]

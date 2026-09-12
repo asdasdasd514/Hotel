@@ -1,0 +1,377 @@
+[
+  {
+    "_id": 1,
+    "Content": "Wi-fi có ở toàn bộ khách sạn và miễn phí",
+    "AmenityId": 1
+  },
+  {
+    "_id": 2,
+    "Content": "Truyền hình vệ tinh",
+    "AmenityId": 2
+  },
+  {
+    "_id": 3,
+    "Content": "Kết nối điện thoại",
+    "AmenityId": 2
+  },
+  {
+    "_id": 4,
+    "Content": "Ổ cắm cho iPod",
+    "AmenityId": 2
+  },
+  {
+    "_id": 5,
+    "Content": "Màn hình phẳng",
+    "AmenityId": 2
+  },
+  {
+    "_id": 6,
+    "Content": "Tivi 98 inch",
+    "AmenityId": 2
+  },
+  {
+    "_id": 8,
+    "Content": "Máy điều hòa riêng trong phòng",
+    "AmenityId": 3
+  },
+  {
+    "_id": 9,
+    "Content": "Hệ thống thông gió",
+    "AmenityId": 3
+  },
+  {
+    "_id": 10,
+    "Content": "Quạt máy",
+    "AmenityId": 3
+  },
+  {
+    "_id": 11,
+    "Content": "Quạt trần",
+    "AmenityId": 3
+  },
+  {
+    "_id": 12,
+    "Content": "Hệ thống sưởi",
+    "AmenityId": 3
+  },
+  {
+    "_id": 13,
+    "Content": "Máy hút ẩm",
+    "AmenityId": 3
+  },
+  {
+    "_id": 14,
+    "Content": "Bồn tắm/vòi sen kết hợp",
+    "AmenityId": 4
+  },
+  {
+    "_id": 15,
+    "Content": "Bồn tắm nước nóng",
+    "AmenityId": 4
+  },
+  {
+    "_id": 16,
+    "Content": "Bồn tắm riêng trong phòng",
+    "AmenityId": 4
+  },
+  {
+    "_id": 17,
+    "Content": "Bồn tắm nằm",
+    "AmenityId": 4
+  },
+  {
+    "_id": 18,
+    "Content": "Tầm nhìn ra khung cảnh",
+    "AmenityId": 5
+  },
+  {
+    "_id": 19,
+    "Content": "Khung cảnh đẹp/rộng",
+    "AmenityId": 5
+  },
+  {
+    "_id": 20,
+    "Content": "Mở cửa quanh năm",
+    "AmenityId": 11
+  },
+  {
+    "_id": 21,
+    "Content": "Hồ bơi ngoài trời",
+    "AmenityId": 11
+  },
+  {
+    "_id": 22,
+    "Content": "Hồ bơi có tầm nhìn",
+    "AmenityId": 11
+  },
+  {
+    "_id": 23,
+    "Content": "Hồ bơi có nước nóng",
+    "AmenityId": 11
+  },
+  {
+    "_id": 24,
+    "Content": "Ghế/ghế dài tắm nắng",
+    "AmenityId": 11
+  },
+  {
+    "_id": 25,
+    "Content": "Hàng rào quanh hồ bơi",
+    "AmenityId": 11
+  },
+  {
+    "_id": 26,
+    "Content": "Khăn hồ bơi",
+    "AmenityId": 11
+  },
+  {
+    "_id": 27,
+    "Content": "Xe đưa đón khách sạn",
+    "AmenityId": 12
+  },
+  {
+    "_id": 28,
+    "Content": "Thuê xe máy",
+    "AmenityId": 12
+  },
+  {
+    "_id": 29,
+    "Content": "Dịch vụ đưa đón",
+    "AmenityId": 12
+  },
+  {
+    "_id": 30,
+    "Content": "Máy pha cà phê riêng trong phòng",
+    "AmenityId": 9
+  },
+  {
+    "_id": 31,
+    "Content": "Trà/Cà phê miễn phí",
+    "AmenityId": 9
+  },
+  {
+    "_id": 32,
+    "Content": "Nước suối miễn phí",
+    "AmenityId": 9
+  },
+  {
+    "_id": 33,
+    "Content": "Ấm đun nước điện",
+    "AmenityId": 9
+  },
+  {
+    "_id": 34,
+    "Content": "Dụng cụ pha trà/cà phê",
+    "AmenityId": 9
+  },
+  {
+    "_id": 37,
+    "Content": "Phòng gửi đồ ở spa",
+    "AmenityId": 14
+  },
+  {
+    "_id": 38,
+    "Content": "Gói spa/chăm sóc sức khỏe",
+    "AmenityId": 14
+  },
+  {
+    "_id": 39,
+    "Content": "Khu vực thư giãn/spa lounge",
+    "AmenityId": 14
+  },
+  {
+    "_id": 40,
+    "Content": "Có chỗ đỗ xe công cộng miễn phí tại chỗ",
+    "AmenityId": 15
+  },
+  {
+    "_id": 41,
+    "Content": "Quầy bar",
+    "AmenityId": 16
+  },
+  {
+    "_id": 42,
+    "Content": "Quầy bar (đồ ăn nhẹ)",
+    "AmenityId": 16
+  },
+  {
+    "_id": 43,
+    "Content": "Phòng lounge / khu vực thư giãn",
+    "AmenityId": 16
+  },
+  {
+    "_id": 44,
+    "Content": "Khu vực hút thuốc riêng",
+    "AmenityId": 16
+  },
+  {
+    "_id": 45,
+    "Content": "Giấy vệ sinh",
+    "AmenityId": 18
+  },
+  {
+    "_id": 46,
+    "Content": "Khăn tắm",
+    "AmenityId": 18
+  },
+  {
+    "_id": 47,
+    "Content": "Dép",
+    "AmenityId": 18
+  },
+  {
+    "_id": 48,
+    "Content": "Nhà vệ sinh",
+    "AmenityId": 18
+  },
+  {
+    "_id": 49,
+    "Content": "Máy sấy tóc",
+    "AmenityId": 18
+  },
+  {
+    "_id": 50,
+    "Content": "Vòi sen",
+    "AmenityId": 18
+  },
+  {
+    "_id": 51,
+    "Content": "Áo choàng tắm",
+    "AmenityId": 18
+  },
+  {
+    "_id": 52,
+    "Content": "Phòng cách âm",
+    "AmenityId": 17
+  },
+  {
+    "_id": 53,
+    "Content": "Kính cách âm 2 lớp",
+    "AmenityId": 17
+  },
+  {
+    "_id": 54,
+    "Content": "Rèm chống ồn",
+    "AmenityId": 17
+  },
+  {
+    "_id": 55,
+    "Content": "Dịch vụ ăn uống tại phòng",
+    "AmenityId": 19
+  },
+  {
+    "_id": 56,
+    "Content": "Quầy bar & nhà hàng",
+    "AmenityId": 19
+  },
+  {
+    "_id": 57,
+    "Content": "Bữa sáng miễn phí",
+    "AmenityId": 19
+  },
+  {
+    "_id": 58,
+    "Content": "Bữa ăn trẻ em",
+    "AmenityId": 19
+  },
+  {
+    "_id": 59,
+    "Content": "Minibar",
+    "AmenityId": 19
+  },
+  {
+    "_id": 60,
+    "Content": "Trái cây",
+    "AmenityId": 19
+  },
+  {
+    "_id": 61,
+    "Content": "Quán cà phê",
+    "AmenityId": 19
+  },
+  {
+    "_id": 62,
+    "Content": "Tủ lạnh mini",
+    "AmenityId": 6
+  },
+  {
+    "_id": 63,
+    "Content": "Đồ ăn nhẹ",
+    "AmenityId": 6
+  },
+  {
+    "_id": 64,
+    "Content": "Minibar có tính phí",
+    "AmenityId": 6
+  },
+  {
+    "_id": 65,
+    "Content": "Minibar miễn phí",
+    "AmenityId": 6
+  },
+  {
+    "_id": 66,
+    "Content": "Đồ uống nhẹ",
+    "AmenityId": 6
+  },
+  {
+    "_id": 67,
+    "Content": "Giường đơn lớn",
+    "AmenityId": 21
+  },
+  {
+    "_id": 68,
+    "Content": "Nệm cao su",
+    "AmenityId": 21
+  },
+  {
+    "_id": 69,
+    "Content": "Giường chống dị ứng",
+    "AmenityId": 21
+  },
+  {
+    "_id": 70,
+    "Content": "Giường đôi queen size",
+    "AmenityId": 22
+  },
+  {
+    "_id": 71,
+    "Content": "Nệm lò xo",
+    "AmenityId": 22
+  },
+  {
+    "_id": 72,
+    "Content": "Giường chống dị ứng",
+    "AmenityId": 22
+  },
+  {
+    "_id": 73,
+    "Content": "Có phù hợp trẻ em",
+    "AmenityId": 22
+  },
+  {
+    "_id": 74,
+    "Content": "Khu vực làm việc riêng",
+    "AmenityId": 10
+  },
+  {
+    "_id": 75,
+    "Content": "Cổng sạc USB",
+    "AmenityId": 10
+  },
+  {
+    "_id": 76,
+    "Content": "Ổ cắm điện gần bàn",
+    "AmenityId": 10
+  },
+  {
+    "_id": 77,
+    "Content": "Khu vực bàn rộng rãi",
+    "AmenityId": 10
+  },
+  {
+    "_id": 78,
+    "Content": "WiFi tốc độ cao",
+    "AmenityId": 10
+  }
+]

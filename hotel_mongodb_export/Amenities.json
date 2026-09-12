@@ -1,0 +1,116 @@
+[
+  {
+    "_id": 1,
+    "Name": "Wifi Miễn Phí",
+    "IconUrl": "wifi",
+    "IsActive": true
+  },
+  {
+    "_id": 2,
+    "Name": "TV màn hình phẳng",
+    "IconUrl": "tv",
+    "IsActive": true
+  },
+  {
+    "_id": 3,
+    "Name": "Điều Hòa Không Khí",
+    "IconUrl": "car-battery",
+    "IsActive": true
+  },
+  {
+    "_id": 4,
+    "Name": "Bồn Tắm Sứ",
+    "IconUrl": "bathtub",
+    "IsActive": true
+  },
+  {
+    "_id": 5,
+    "Name": "Ban Công",
+    "IconUrl": "street-view",
+    "IsActive": true
+  },
+  {
+    "_id": 6,
+    "Name": "Minibar",
+    "IconUrl": "drumstick-bite",
+    "IsActive": true
+  },
+  {
+    "_id": 9,
+    "Name": "Máy Pha Cà Phê",
+    "IconUrl": "mug-saucer",
+    "IsActive": true
+  },
+  {
+    "_id": 10,
+    "Name": "Bàn Làm Việc",
+    "IconUrl": "table",
+    "IsActive": true
+  },
+  {
+    "_id": 11,
+    "Name": "Hồ bơi",
+    "IconUrl": "person-swimming",
+    "IsActive": true
+  },
+  {
+    "_id": 12,
+    "Name": "Xe đưa đón",
+    "IconUrl": "car-on",
+    "IsActive": true
+  },
+  {
+    "_id": 13,
+    "Name": "Trung tâm thể dục",
+    "IconUrl": "dumbbell",
+    "IsActive": true
+  },
+  {
+    "_id": 14,
+    "Name": "Trung tâm Spa",
+    "IconUrl": "spa",
+    "IsActive": true
+  },
+  {
+    "_id": 15,
+    "Name": "Chỗ đỗ xe",
+    "IconUrl": "square-parking",
+    "IsActive": true
+  },
+  {
+    "_id": 16,
+    "Name": "Quầy bar",
+    "IconUrl": "martini-glass-citrus",
+    "IsActive": true
+  },
+  {
+    "_id": 17,
+    "Name": "Hệ thống cách âm",
+    "IconUrl": "volume-xmark",
+    "IsActive": true
+  },
+  {
+    "_id": 18,
+    "Name": "Phòng tắm riêng",
+    "IconUrl": "shower",
+    "IsActive": true
+  },
+  {
+    "_id": 19,
+    "Name": "Đồ ăn & Nước uống",
+    "IconUrl": "utensils",
+    "IsActive": true
+  },
+  {
+    "_id": 21,
+    "Name": "Giường đơn",
+    "IconUrl": "bed",
+    "IsActive": true
+  },
+  {
+    "_id": 22,
+    "Name": "Giường đôi",
+    "IconUrl": "bed",
+    "IsActive": true
+  }
+]

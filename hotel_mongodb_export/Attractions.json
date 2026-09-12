@@ -1,0 +1,102 @@
+[
+  {
+    "_id": 1,
+    "Name": "Tour Du lịch Hồ chí minh",
+    "Category": "Giải trí",
+    "DistanceKm": {
+      "$numberDecimal": "14.90"
+    },
+    "Description": "Bắt đầu chuyến đi trong ngày khám phá Sài Gòn (Thành phố Hồ Chí Minh) sôi động trong một tour nhóm có hướng dẫn viên, giúp bạn hòa mình vào nhịp sống địa phương.\nKhám phá các chợ đường phố nổi tiếng, nơi bạn có thể chiêm ngưỡng cảnh người dân địa phương trao đổi mua bán nông sản tươi sống và đồ thủ công truyền thống.\nThưởng thức bữa trưa Việt Nam ngon miệng và tham quan các công trình kiến trúc lịch sử vĩ đại của thành phố.\nTận hưởng dịch vụ đón và trả khách thuận tiện, khởi hành từ cảng Phú Mỹ",
+    "MapEmbedLink": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1426.028639734316!2d106.61473622718802!3d10.84230955968355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1777725468303!5m2!1sen!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+    "Latitude": {
+      "$numberDecimal": "10.84"
+    },
+    "Longitude": {
+      "$numberDecimal": "106.61"
+    },
+    "Address": "64 QL22, Bà Điểm, Hồ Chí Minh, Vietnam",
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777725571/Home/Attractions/tour-du-lich-hcm/fkh0ttcl05wqjh9hglsv.jpg",
+    "IsActive": true,
+    "Slug": "tour-du-lich-ho-chi-minh"
+  },
+  {
+    "_id": 2,
+    "Name": "Suối Nước Nóng Minera Bình Châu",
+    "Category": "Thiên nhiên",
+    "DistanceKm": {
+      "$numberDecimal": "17.00"
+    },
+    "Description": "Khám phá Minera Hot Springs Binh Chau, suối khoáng nóng tự nhiên độc đáo và duy nhất tại miền Nam Việt Nam.\nTận hưởng điểm đến suối khoáng thư giãn chỉ cách Thành phố Hồ Chí Minh khoảng 2 giờ di chuyển.\nTrải nghiệm Minera, điểm đến chăm sóc sức khỏe tiên phong tại Việt Nam, kết hợp hài hòa giữa suối khoáng nóng và rừng sinh thái.",
+    "MapEmbedLink": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.8461772655805!2d107.56016629999999!3d10.591197200000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175bbc3079ad9eb%3A0x5d63ab7d754bdb84!2zU3Xhu5FpIG7GsOG7m2MgbsOzbmcgQsOsbmggQ2jDonUsIELDrG5oIENow6J1LCBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1777730652176!5m2!1sen!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+    "Latitude": {
+      "$numberDecimal": "10.59"
+    },
+    "Longitude": {
+      "$numberDecimal": "107.56"
+    },
+    "Address": "Binh Chau, Ho Chi Minh, Vietnam",
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1777730676/Home/Attractions/suoi-nuoc-nong-minera-binh-chau/ppfaztkrefp3edsdc8h0.jpg",
+    "IsActive": true,
+    "Slug": "suoi-nuoc-nong-minera-binh-chau"
+  },
+  {
+    "_id": 3,
+    "Name": "Tháp Trầm Hương",
+    "Category": "Khu du lịch",
+    "DistanceKm": {
+      "$numberDecimal": "4.00"
+    },
+    "Description": "<p class=\"p\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 12pt;\">Tháp Trầm Hương là biểu tượng nổi tiếng của thành phố Nha Trang, nằm ngay quảng trường 2/4 trên đường Trần Phú, sát bãi biển trung tâm. Công trình có kiến trúc độc đáo mô phỏng hình ảnh búp sen và hương trầm — đặc sản nổi tiếng của Khánh Hòa. Đây là địa điểm check-in, tham quan và ngắm biển rất được du khách yêu thích khi đến Nha Trang.</span><span style=\"font-size: 12pt;\"><o:p></o:p></span></font></p><p class=\"p\"><font face=\"Arial, sans-serif\"><br></font></p><h3><font face=\"Arial, sans-serif\"><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\">Mô tả chi tiết</span></span><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\"><o:p></o:p></span></span></font></h3><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Tháp cao khoảng 39m với nhiều tầng tham quan.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Ban đêm công trình được thắp đèn rất đẹp, tạo điểm nhấn ngay trung tâm biển Nha Trang.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Khu vực xung quanh có:<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Quảng trường rộng để đi dạo.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Ghế đá, công viên ven biển.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Nhiều quán cafe, nhà hàng và khu vui chơi gần đó.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Từ đây có thể ngắm:<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Biển Trần Phú.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Bình minh sáng sớm.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Hoàng hôn và cảnh thành phố về đêm.<o:p></o:p></font></p><h3><font face=\"Arial, sans-serif\"><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\">Giờ tham quan</span></span><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\"><o:p></o:p></span></span></font></h3><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Khu vực bên ngoài quảng trường mở tự do&nbsp;<span style=\"font-weight: bolder;\"><span class=\"15\">24/7</span></span>.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Thời gian đẹp để tham quan:<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-weight: bold; font-size: 10pt;\">o&nbsp;</span><span style=\"font-weight: bolder;\"><span class=\"15\">5h30 – 7h00:</span></span>&nbsp;ngắm bình minh, không khí mát mẻ.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-weight: bold; font-size: 10pt;\">o&nbsp;</span><span style=\"font-weight: bolder;\"><span class=\"15\">16h30 – 18h30:</span></span>&nbsp;ngắm hoàng hôn và biển chiều.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-weight: bold; font-size: 10pt;\">o&nbsp;</span><span style=\"font-weight: bolder;\"><span class=\"15\">19h00 – 22h00:</span></span>&nbsp;thời điểm đẹp nhất để chụp ảnh đêm vì tháp lên đèn rất nổi bật.<o:p></o:p></font></p><h3><font face=\"Arial, sans-serif\"><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\">Hoạt động nổi bật</span></span><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\"><o:p></o:p></span></span></font></h3><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Check-in sống ảo với view biển.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Đi bộ dọc công viên biển Trần Phú.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Thuê xe điện hoặc xe đạp đôi quanh quảng trường.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Thưởng thức hải sản và đồ ăn vặt gần chợ đêm Nha Trang.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Xem biểu diễn đường phố vào cuối tuần hoặc dịp lễ.<o:p></o:p></font></p><h3><font face=\"Arial, sans-serif\"><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\">Vị trí</span></span><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\"><o:p></o:p></span></span></font></h3><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Địa chỉ: Quảng trường 2/4, đường Trần Phú, TP. Nha Trang, Khánh Hòa.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Nằm ngay trung tâm nên rất thuận tiện di chuyển từ khách sạn, chợ đêm hoặc bãi biển.<o:p></o:p></font></p><h3><font face=\"Arial, sans-serif\"><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\">Lưu ý</span></span><span style=\"font-weight: bolder;\"><span style=\"font-size: 13.5pt;\"><o:p></o:p></span></span></font></h3><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Buổi tối cuối tuần thường rất đông khách du lịch.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Nếu muốn chụp ảnh ít người nên đi sáng sớm.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 36pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">·&nbsp;</span>Có thể kết hợp tham quan:<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Chợ đêm Nha Trang.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Bãi biển Trần Phú.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Sailing Club.<o:p></o:p></font></p><p class=\"MsoNormal\" style=\"margin: 5pt 0px 5pt 72pt; text-indent: -18pt;\"><font face=\"Arial, sans-serif\"><span style=\"font-size: 10pt;\">o&nbsp;</span>Nhà thờ Núi Nha Trang.<o:p></o:p></font></p><p class=\"MsoNormal\"><font face=\"Arial, sans-serif\">&nbsp;</font></p>",
+    "MapEmbedLink": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15596.662918220976!2d109.18545780133385!3d12.237055424053494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170677bd4d40413%3A0x7643676250775d06!2sTram%20Huong%20Tower!5e0!3m2!1sen!2s!4v1778649135961!5m2!1sen!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+    "Latitude": {
+      "$numberDecimal": "12.24"
+    },
+    "Longitude": {
+      "$numberDecimal": "109.19"
+    },
+    "Address": "Trần Phú Quảng trường, Hai tháng Tư, Nha Trang, Khánh Hòa 650000, Vietnam",
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1778649349/Home/Attractions/thap-tram-huong/jalrjckeuqqxsbbch8me.jpg",
+    "IsActive": true,
+    "Slug": "thap-tram-huong"
+  },
+  {
+    "_id": 6,
+    "Name": "Bãi biển Nha Trang",
+    "Category": "Bãi biển",
+    "DistanceKm": {
+      "$numberDecimal": "15.00"
+    },
+    "Description": "<p data-start=\"0\" data-end=\"316\">Bãi biển Nha Trang là một trong những bãi biển đẹp và nổi tiếng nhất Việt Nam, nằm dọc đường Trần Phú ngay trung tâm thành phố Nha Trang, tỉnh Khánh Hòa. Nơi đây nổi bật với bờ cát trắng mịn trải dài, nước biển xanh trong, sóng khá êm và không khí rất nhộn nhịp cả ngày lẫn đêm. <span class=\"\" data-state=\"closed\"></span></p><p data-start=\"0\" data-end=\"316\"><br></p>\n<p data-start=\"318\" data-end=\"348\">Du khách đến đây thường thích:</p>&nbsp; &nbsp; &nbsp;Tắm biển, ngắm bình minh và hoàng hôn.<br>&nbsp; &nbsp; &nbsp;Chơi dù bay, mô tô nước, chèo SUP, lặn ngắm san hô.<br>&nbsp; &nbsp; &nbsp;Đi dạo dọc công viên biển Trần Phú.<br>&nbsp; &nbsp; &nbsp;Thưởng thức hải sản và các quán cafe/beach club ven biển.<br>&nbsp; &nbsp; &nbsp;Giờ mở cửa &amp; thời gian đẹp để đi<br>&nbsp; &nbsp; &nbsp;Bãi biển trung tâm Nha Trang mở cửa tự do 24/7 và không thu vé.<br><div style=\"display: inline !important;\">&nbsp; &nbsp; &nbsp;Thời gian tắm biển an toàn và đẹp nhất:</div>Sáng: khoảng <strong data-start=\"781\" data-end=\"796\">5h30 – 9h00</strong><br>&nbsp; &nbsp; &nbsp;Chiều: khoảng <strong data-start=\"815\" data-end=\"832\">15h30 – 18h00</strong><br>&nbsp; &nbsp; &nbsp;Không khí theo từng thời điểm<div><br><ul data-start=\"906\" data-end=\"1328\">\n<li data-section-id=\"y5g46k\" data-start=\"906\" data-end=\"986\">\n<strong data-start=\"908\" data-end=\"921\">Sáng sớm:</strong> rất mát, nhiều người dân tập thể dục, chạy bộ và ngắm bình minh.\n</li>\n<li data-section-id=\"ne4byp\" data-start=\"987\" data-end=\"1065\">\n<strong data-start=\"989\" data-end=\"1003\">Buổi trưa:</strong> nắng khá gắt, phù hợp nghỉ dưỡng hoặc chơi các trò dưới nước.\n</li>\n<li data-section-id=\"1c0e4hi\" data-start=\"1066\" data-end=\"1152\">\n<strong data-start=\"1068\" data-end=\"1082\">Chiều tối:</strong> đông vui nhất, thích hợp đi dạo biển, ăn uống và chill tại beach bar.</li>\n<li data-section-id=\"ldvfnk\" data-start=\"1153\" data-end=\"1328\">\n<strong data-start=\"1155\" data-end=\"1167\">Ban đêm:</strong> khu vực Trần Phú rất sôi động với quán bar, nhạc sống và chợ đêm. Một số khu như Marina Beach còn mở tắm biển đêm tới 22h. <span class=\"\" data-state=\"closed\"></span>\n</li>\n</ul><ul data-start=\"906\" data-end=\"1328\">\n<li data-section-id=\"2de63d\" data-start=\"722\" data-end=\"870\"><ul data-start=\"766\" data-end=\"870\">\n</ul>\n</li></ul>\n\n\n\n\n<h3 data-section-id=\"8ldvv5\" data-start=\"1330\" data-end=\"1373\">Thời điểm đẹp nhất để du lịch Nha Trang</h3><div><br></div>\n<ul data-start=\"1374\" data-end=\"1544\">\n<li data-section-id=\"32yktj\" data-start=\"1374\" data-end=\"1450\">\nTừ <strong data-start=\"1379\" data-end=\"1402\">tháng 1 đến tháng 8</strong> là mùa biển đẹp, nắng nhiều và nước trong xanh.\n</li>\n<li data-section-id=\"1pkfv88\" data-start=\"1451\" data-end=\"1544\">\nĐẹp nhất thường rơi vào khoảng <strong data-start=\"1484\" data-end=\"1505\">tháng 4 – tháng 7</strong>. <span class=\"\" data-state=\"closed\"></span>\n</li>\n</ul>\n<h3 data-section-id=\"i0jekg\" data-start=\"1546\" data-end=\"1592\">Một số địa điểm biển nổi tiếng ở Nha Trang</h3>\n<ul data-start=\"1593\" data-end=\"1848\">\n<li data-section-id=\"af6epi\" data-start=\"1593\" data-end=\"1635\">&nbsp; &nbsp; &nbsp;Bãi biển Trần Phú (trung tâm thành phố).\n</li>\n<li data-section-id=\"cc8p6z\" data-start=\"1636\" data-end=\"1683\">&nbsp; &nbsp; &nbsp;Bãi Tranh – nổi tiếng nước trong và cảnh đẹp.\n</li>\n<li data-section-id=\"1n1h80p\" data-start=\"1684\" data-end=\"1723\">&nbsp; &nbsp; &nbsp;Hòn Tằm – resort và tắm biển cao cấp.\n</li>\n<li data-section-id=\"1lgbfkn\" data-start=\"1724\" data-end=\"1762\">&nbsp; &nbsp; &nbsp;Hòn Nội – bãi tắm đôi rất nổi tiếng.\n</li>\n<li data-section-id=\"1bmm29l\" data-start=\"1763\" data-end=\"1848\">&nbsp; &nbsp; &nbsp;Bãi Nhũ Tiên – yên tĩnh và ít đông người hơn.</li><li data-section-id=\"1bmm29l\" data-start=\"1763\" data-end=\"1848\"><br></li><li data-section-id=\"1bmm29l\" data-start=\"1763\" data-end=\"1848\"><b>Lưu ý khi đi biển</b></li></ul>\n<ul data-start=\"1872\" data-end=\"2120\">\n<li data-section-id=\"ntdpyo\" data-start=\"1872\" data-end=\"1923\">&nbsp; &nbsp; &nbsp;Nên mang kem chống nắng, kính mát và dép đi biển.\n</li>\n<li data-section-id=\"pqc9h7\" data-start=\"1924\" data-end=\"1968\">&nbsp; &nbsp; &nbsp;Không nên tắm quá xa bờ khi biển có cờ đỏ.\n</li>\n<li data-section-id=\"1413bfi\" data-start=\"1969\" data-end=\"2013\">&nbsp; &nbsp; &nbsp;Cuối tuần và dịp lễ thường rất đông khách.\n</li>\n<li data-section-id=\"ya9zo6\" data-start=\"2014\" data-end=\"2120\">&nbsp; &nbsp; &nbsp;Nếu muốn chụp ảnh đẹp, nên đi lúc bình minh hoặc khoảng 16h chiều</li></ul></div>",
+    "MapEmbedLink": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62386.81929313099!2d109.1525166355939!3d12.236345616068395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31706770f4958433%3A0xf09b18bfbf27bde7!2zQsOjaSBiaeG7g24gTmhhIFRyYW5n!5e0!3m2!1sen!2s!4v1778648068123!5m2!1sen!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+    "Latitude": {
+      "$numberDecimal": "12.24"
+    },
+    "Longitude": {
+      "$numberDecimal": "109.15"
+    },
+    "Address": "Khánh Hòa",
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1778648457/Home/Attractions/bai-bien-nha-trang/mqojgreik5em1bqg7pis.webp",
+    "IsActive": true,
+    "Slug": "bai-bien-nha-trang"
+  },
+  {
+    "_id": 7,
+    "Name": "Madame Lam - Nhà hàng món Việt",
+    "Category": "Nhà hang2",
+    "DistanceKm": {
+      "$numberDecimal": "5.00"
+    },
+    "Description": null,
+    "MapEmbedLink": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1078317338397!2d106.7390035!3d10.8030526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527da08938211%3A0x77dedb27796b401!2sMadame%20Lam%20-%20Vietnamese%20Contemporary%20Cuisine!5e0!3m2!1sen!2s!4v1778650293622!5m2!1sen!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+    "Latitude": {
+      "$numberDecimal": "10.80"
+    },
+    "Longitude": {
+      "$numberDecimal": "106.74"
+    },
+    "Address": "10 Trần Ngọc Diện, An Khánh, Hồ Chí Minh 700000, Vietnam",
+    "ImageUrl": "https://res.cloudinary.com/dmborjp3u/image/upload/v1778650380/Home/Attractions/madame-lam-nha-hang-mon-viet/t6r8up8dswkdizmmbaip.jpg",
+    "IsActive": false,
+    "Slug": "madame-lam-nha-hang-mon-viet"
+  }
+]

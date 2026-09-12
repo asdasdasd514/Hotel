@@ -1,0 +1,254 @@
+[
+  {
+    "RoomTypeId": 1,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 2,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 3,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 7,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 1
+  },
+  {
+    "RoomTypeId": 1,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 2,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 3,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 5,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 7,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 2
+  },
+  {
+    "RoomTypeId": 2,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 3,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 5,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 7,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 3
+  },
+  {
+    "RoomTypeId": 5,
+    "AmenityId": 4
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 4
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 4
+  },
+  {
+    "RoomTypeId": 1,
+    "AmenityId": 5
+  },
+  {
+    "RoomTypeId": 2,
+    "AmenityId": 5
+  },
+  {
+    "RoomTypeId": 3,
+    "AmenityId": 5
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 5
+  },
+  {
+    "RoomTypeId": 7,
+    "AmenityId": 5
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 5
+  },
+  {
+    "RoomTypeId": 5,
+    "AmenityId": 9
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 11
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 11
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 11
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 11
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 12
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 12
+  },
+  {
+    "RoomTypeId": 5,
+    "AmenityId": 13
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 13
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 14
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 14
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 16
+  },
+  {
+    "RoomTypeId": 10,
+    "AmenityId": 16
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 17
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 17
+  },
+  {
+    "RoomTypeId": 1,
+    "AmenityId": 18
+  },
+  {
+    "RoomTypeId": 3,
+    "AmenityId": 18
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 18
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 18
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 18
+  },
+  {
+    "RoomTypeId": 2,
+    "AmenityId": 19
+  },
+  {
+    "RoomTypeId": 3,
+    "AmenityId": 19
+  },
+  {
+    "RoomTypeId": 4,
+    "AmenityId": 19
+  },
+  {
+    "RoomTypeId": 5,
+    "AmenityId": 19
+  },
+  {
+    "RoomTypeId": 6,
+    "AmenityId": 19
+  },
+  {
+    "RoomTypeId": 8,
+    "AmenityId": 19
+  },
+  {
+    "RoomTypeId": 9,
+    "AmenityId": 19
+  }
+]

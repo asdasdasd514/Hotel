@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq;
 using backend.Data;
 using backend.Mappers;
@@ -30,9 +32,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendDev", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://127.0.0.1:5173")
+        policy.SetIsOriginAllowed(_ => true)
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
 
@@ -75,26 +78,46 @@ builder.Services.AddSingleton<RoomCleaningSchedulerService>();
 builder.Services.AddHostedService(sp => sp.GetRequiredService<RoomCleaningSchedulerService>());
 
 builder.Services.AddDbContext<AppDbContext>((sp, options) =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlOptions => sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
-    .AddInterceptors(new SoftDeleteInterceptor())
-    .AddInterceptors(sp.GetRequiredService<AuditSaveChangesInterceptor>())); //Dùng cho AuditLog, không được xoá
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    if (connectionString != null && (connectionString.Contains("pooler.supabase.com") || connectionString.Contains("Host=") || connectionString.Contains("Port=")))
+    {
+        options.UseNpgsql(connectionString,
+            npgsqlOptions => npgsqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
+    }
+    else
+    {
+        options.UseSqlServer(connectionString,
+            sqlOptions => sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
+    }
+
+    options.AddInterceptors(new SoftDeleteInterceptor())
+           .AddInterceptors(sp.GetRequiredService<AuditSaveChangesInterceptor>());
+});
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await db.Database.ExecuteSqlRawAsync(@"
+
+    if (db.Database.IsSqlServer())
+    {
+        await db.Database.ExecuteSqlRawAsync(@"
 IF COL_LENGTH('Vouchers', 'IsActive') IS NULL
 BEGIN
     ALTER TABLE Vouchers
     ADD IsActive bit NOT NULL CONSTRAINT DF_Vouchers_IsActive DEFAULT(1);
 END
 ");
-    await db.Database.ExecuteSqlRawAsync(@"
+        await db.Database.ExecuteSqlRawAsync(@"
 IF COL_LENGTH('Articles', 'Summary') IS NULL ALTER TABLE Articles ADD Summary nvarchar(max) NULL;
 IF COL_LENGTH('Articles', 'Tags') IS NULL ALTER TABLE Articles ADD Tags nvarchar(max) NULL;
 IF COL_LENGTH('Articles', 'IsApproved') IS NULL ALTER TABLE Articles ADD IsApproved bit NOT NULL CONSTRAINT DF_Articles_IsApproved DEFAULT(0);
@@ -131,7 +154,7 @@ BEGIN
     );
 END
 ");
-    await db.Database.ExecuteSqlRawAsync(@"
+        await db.Database.ExecuteSqlRawAsync(@"
 IF COL_LENGTH('Invoices', 'BookingDetailId') IS NULL ALTER TABLE Invoices ADD BookingDetailId int NULL;
 IF COL_LENGTH('Invoices', 'VoucherId') IS NULL ALTER TABLE Invoices ADD VoucherId int NULL;
 IF COL_LENGTH('Invoices', 'Code') IS NULL ALTER TABLE Invoices ADD Code nvarchar(50) NULL;
@@ -171,7 +194,7 @@ BEGIN
     );
 END
 ");
-    await db.Database.ExecuteSqlRawAsync(@"
+        await db.Database.ExecuteSqlRawAsync(@"
 IF COL_LENGTH('Services', 'Slug') IS NULL 
 BEGIN
     ALTER TABLE Services ADD Slug nvarchar(255) NULL;
@@ -187,19 +210,7 @@ BEGIN
 END
 ");
 
-    // Populate slugs for services if missing
-    var servicesWithNoSlug = await db.Services.Where(s => s.Slug == null || s.Slug == "").ToListAsync();
-    if (servicesWithNoSlug.Any())
-    {
-        foreach (var s in servicesWithNoSlug)
-        {
-            s.Slug = GenerateSlug(s.Name);
-        }
-        await db.SaveChangesAsync();
-    }
-
-    // Auto-fix any rooms that have checked-in guests but are incorrectly marked as Available/other status
-    await db.Database.ExecuteSqlRawAsync(@"
+        await db.Database.ExecuteSqlRawAsync(@"
 UPDATE Rooms
 SET Status = 'Occupied'
 WHERE Id IN (
@@ -208,6 +219,40 @@ WHERE Id IN (
     WHERE Status = 'CheckedIn' AND RoomId IS NOT NULL
 ) AND Status <> 'Occupied'
 ");
+    }
+    else
+    {
+        var databaseCreator = db.Database.GetService<Microsoft.EntityFrameworkCore.Storage.IDatabaseCreator>() as Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator;
+        if (databaseCreator != null)
+        {
+            try
+            {
+                await databaseCreator.CreateTablesAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Schema Info]: {ex.Message}");
+            }
+        }
+    }
+
+    // Populate slugs for services if missing
+    try
+    {
+        var servicesWithNoSlug = await db.Services.Where(s => s.Slug == null || s.Slug == "").ToListAsync();
+        if (servicesWithNoSlug.Any())
+        {
+            foreach (var s in servicesWithNoSlug)
+            {
+                s.Slug = GenerateSlug(s.Name);
+            }
+            await db.SaveChangesAsync();
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"[Services Slug Info]: {ex.Message}");
+    }
 }
 
 static string GenerateSlug(string value)
@@ -222,18 +267,10 @@ static string GenerateSlug(string value)
     return builder.ToString().Trim('-');
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("FrontendDev");
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
 
 app.UseAuthentication();
 app.UseAuthorization();

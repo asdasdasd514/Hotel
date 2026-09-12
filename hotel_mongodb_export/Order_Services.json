@@ -1,0 +1,470 @@
+[
+  {
+    "_id": 1,
+    "BookingDetailId": 5,
+    "OrderDate": {
+      "$date": "2026-04-22T08:50:29.7058633"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "80000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 2,
+    "BookingDetailId": 5,
+    "OrderDate": {
+      "$date": "2026-04-22T08:50:33.3596025"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "150000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 3,
+    "BookingDetailId": 5,
+    "OrderDate": {
+      "$date": "2026-04-22T08:50:43.3626451"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "1000000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 4,
+    "BookingDetailId": 13,
+    "OrderDate": {
+      "$date": "2026-04-24T04:18:48.3284032"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "600000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 5,
+    "BookingDetailId": 13,
+    "OrderDate": {
+      "$date": "2026-04-24T04:18:59.7220263"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "100000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 6,
+    "BookingDetailId": 13,
+    "OrderDate": {
+      "$date": "2026-04-24T04:20:06.5551020"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "150000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 7,
+    "BookingDetailId": 13,
+    "OrderDate": {
+      "$date": "2026-04-24T04:20:52.3237756"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "800000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 8,
+    "BookingDetailId": 14,
+    "OrderDate": {
+      "$date": "2026-04-24T04:43:22.0086208"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "350000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 9,
+    "BookingDetailId": 14,
+    "OrderDate": {
+      "$date": "2026-04-24T04:43:24.3614725"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "150000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 10,
+    "BookingDetailId": 14,
+    "OrderDate": {
+      "$date": "2026-04-24T04:43:26.6828139"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "150000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 11,
+    "BookingDetailId": 25,
+    "OrderDate": {
+      "$date": "2026-04-24T16:10:16.8929953"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "100000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 12,
+    "BookingDetailId": 25,
+    "OrderDate": {
+      "$date": "2026-04-24T16:14:32.5214105"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "500000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 13,
+    "BookingDetailId": 39,
+    "OrderDate": {
+      "$date": "2026-05-14T06:32:34.9405382"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "147000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 14,
+    "BookingDetailId": 39,
+    "OrderDate": {
+      "$date": "2026-05-14T06:32:37.0718215"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "350000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 15,
+    "BookingDetailId": 39,
+    "OrderDate": {
+      "$date": "2026-05-14T06:32:42.7383239"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "4567000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 16,
+    "BookingDetailId": 42,
+    "OrderDate": {
+      "$date": "2026-05-14T11:20:31.8206042"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "350000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 17,
+    "BookingDetailId": 53,
+    "OrderDate": {
+      "$date": "2026-05-15T17:16:37.8244278"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "1670000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 18,
+    "BookingDetailId": 49,
+    "OrderDate": {
+      "$date": "2026-05-16T01:05:28.6007101"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "100000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 19,
+    "BookingDetailId": 70,
+    "OrderDate": {
+      "$date": "2026-05-17T14:15:28.6668839"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "350000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 20,
+    "BookingDetailId": 70,
+    "OrderDate": {
+      "$date": "2026-05-17T14:15:35.6684075"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "200000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 21,
+    "BookingDetailId": 70,
+    "OrderDate": {
+      "$date": "2026-05-17T14:15:44.2259369"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "400000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 22,
+    "BookingDetailId": 80,
+    "OrderDate": {
+      "$date": "2026-05-17T16:04:24.4412014"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "200000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 23,
+    "BookingDetailId": 80,
+    "OrderDate": {
+      "$date": "2026-05-17T16:04:32.8304902"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "100000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 24,
+    "BookingDetailId": 80,
+    "OrderDate": {
+      "$date": "2026-05-17T16:04:44.6203827"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "120000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 25,
+    "BookingDetailId": null,
+    "OrderDate": {
+      "$date": "2026-05-18T04:45:24.2922022"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "0.00"
+    },
+    "Status": "Paid",
+    "UserId": 6
+  },
+  {
+    "_id": 26,
+    "BookingDetailId": null,
+    "OrderDate": {
+      "$date": "2026-05-18T04:54:27.9189402"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "120000.00"
+    },
+    "Status": "Paid",
+    "UserId": 9
+  },
+  {
+    "_id": 27,
+    "BookingDetailId": 100,
+    "OrderDate": {
+      "$date": "2026-05-18T05:27:31.3702817"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "350000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 28,
+    "BookingDetailId": 101,
+    "OrderDate": {
+      "$date": "2026-05-18T05:27:41.1667456"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "300000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 29,
+    "BookingDetailId": 100,
+    "OrderDate": {
+      "$date": "2026-05-18T05:27:47.0929975"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "400000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 30,
+    "BookingDetailId": null,
+    "OrderDate": {
+      "$date": "2026-05-18T05:45:50.3720936"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "417000.00"
+    },
+    "Status": "Paid",
+    "UserId": 6
+  },
+  {
+    "_id": 31,
+    "BookingDetailId": 103,
+    "OrderDate": {
+      "$date": "2026-05-18T05:48:55.4023015"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "417000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 32,
+    "BookingDetailId": 104,
+    "OrderDate": {
+      "$date": "2026-05-18T08:20:23.0695972"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "200000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 33,
+    "BookingDetailId": 104,
+    "OrderDate": {
+      "$date": "2026-05-18T08:20:29.3470047"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "400000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 34,
+    "BookingDetailId": 104,
+    "OrderDate": {
+      "$date": "2026-05-18T08:20:37.8607084"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "100000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 35,
+    "BookingDetailId": 103,
+    "OrderDate": {
+      "$date": "2026-05-19T01:39:42.1443216"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "1144000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 36,
+    "BookingDetailId": 111,
+    "OrderDate": {
+      "$date": "2026-05-19T02:47:15.6289916"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "500000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 37,
+    "BookingDetailId": 111,
+    "OrderDate": {
+      "$date": "2026-05-19T02:47:30.4925501"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "417000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 38,
+    "BookingDetailId": 105,
+    "OrderDate": {
+      "$date": "2026-05-19T04:28:12.5349685"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "464000.00"
+    },
+    "Status": "Paid",
+    "UserId": null
+  },
+  {
+    "_id": 39,
+    "BookingDetailId": null,
+    "OrderDate": {
+      "$date": "2026-05-19T08:16:10.7067163"
+    },
+    "TotalAmount": {
+      "$numberDecimal": "417000.00"
+    },
+    "Status": "Paid",
+    "UserId": 13
+  }
+]

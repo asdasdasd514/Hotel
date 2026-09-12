@@ -435,6 +435,43 @@ namespace backend.Data
                 entity.HasIndex(e => e.UpdatedAt);
             });
 
+            if (Database.ProviderName?.Contains("Npgsql") == true)
+            {
+                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                {
+                    foreach (var property in entityType.GetProperties())
+                    {
+                        var columnType = property.GetColumnType();
+                        if (!string.IsNullOrEmpty(columnType))
+                        {
+                            if (columnType.Equals("datetime", StringComparison.OrdinalIgnoreCase))
+                            {
+                                property.SetColumnType("timestamp with time zone");
+                            }
+                            else if (columnType.StartsWith("nvarchar", StringComparison.OrdinalIgnoreCase))
+                            {
+                                property.SetColumnType(columnType.Replace("nvarchar", "varchar").Replace("varchar(max)", "text"));
+                            }
+                        }
+
+                        var defaultSql = property.GetDefaultValueSql();
+                        if (!string.IsNullOrEmpty(defaultSql) && defaultSql.Equals("GETDATE()", StringComparison.OrdinalIgnoreCase))
+                        {
+                            property.SetDefaultValueSql("NOW()");
+                        }
+                    }
+
+                    foreach (var index in entityType.GetIndexes())
+                    {
+                        var filter = index.GetFilter();
+                        if (!string.IsNullOrEmpty(filter))
+                        {
+                            index.SetFilter(filter.Replace("[is_current] = 1", "\"is_current\" = true").Replace("[IsCurrent] = 1", "\"IsCurrent\" = true"));
+                        }
+                    }
+                }
+            }
+
             base.OnModelCreating(modelBuilder);
         }
 

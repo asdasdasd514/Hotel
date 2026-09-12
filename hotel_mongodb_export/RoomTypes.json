@@ -1,0 +1,162 @@
+[
+  {
+    "_id": 1,
+    "Name": "Standard Single",
+    "BasePrice": {
+      "$numberDecimal": "400000.00"
+    },
+    "CapacityAdults": 1,
+    "CapacityChildren": 0,
+    "Size": {
+      "$numberDecimal": "200.00"
+    },
+    "BedType": "đơn",
+    "Description": "<h3 class=\"e7addce19e f531cf0753\" style=\"font-size: 18px; line-height: 24px; font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block: 0px 0.67em; color: rgb(26, 26, 26);\"><b>TẬN HƯỞNG DỊCH VỤ ĐỈNH CAO, ĐẲNG CẤP THẾ GIỚI</b></h3><div style=\"color: rgb(26, 26, 26); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"></div><div style=\"color: rgb(26, 26, 26); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"></div><div style=\"color: rgb(26, 26, 26); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"></div><div style=\"color: rgb(26, 26, 26); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"></div><div style=\"color: rgb(26, 26, 26); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"></div><p data-testid=\"property-description\" class=\"b99b6ef58f f1152bae71\" style=\"line-height: 20px; font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; color: rgb(26, 26, 26);\">Được thiết kế dành riêng cho khách lưu trú cá nhân, mang đến sự kết hợp hài hòa giữa tiện nghi hiện đại và không gian ấm áp, giúp bạn tận hưởng những giây phút nghỉ ngơi thoải mái sau một ngày dài làm việc hoặc khám phá thành phố. Với diện tích vừa phải nhưng được bố trí thông minh, căn phòng tạo cảm giác rộng rãi, gọn gàng và dễ chịu ngay từ khi bước vào.\n\nĐiểm nhấn của phòng là chiếc giường đơn êm ái với nệm cao cấp, được phủ ga trắng tinh khôi kết hợp cùng tấm runner màu ấm và gối trang trí tinh tế, mang lại cảm giác thư giãn tuyệt đối. Chăn, ga và bộ khăn trải giường luôn được thay mới và vệ sinh kỹ lưỡng, đảm bảo tiêu chuẩn sạch sẽ và an toàn cho sức khỏe. Hệ thống đèn ngủ ánh sáng dịu nhẹ giúp bạn dễ dàng đi vào giấc ngủ sâu và ngon hơn.\n\nKhông gian phòng được trang bị cửa sổ lớn với rèm che dày dặn, vừa giúp điều chỉnh ánh sáng linh hoạt vừa đảm bảo sự riêng tư tối đa. Ánh sáng tự nhiên len lỏi vào phòng vào ban ngày tạo nên một bầu không khí thoáng đãng, trong lành và dễ chịu. Ngoài ra, hệ thống cách âm hiệu quả giúp hạn chế tối đa tiếng ồn bên ngoài, mang lại không gian yên tĩnh tuyệt đối cho việc nghỉ ngơi hoặc làm việc.\n\nPhòng được trang bị đầy đủ tiện nghi phục vụ nhu cầu sinh hoạt hàng ngày của khách lưu trú. Khu vực bàn làm việc riêng biệt với thiết kế gọn gàng, đi kèm ghế ngồi thoải mái, rất phù hợp cho khách đi công tác hoặc cần xử lý công việc cá nhân. Bên cạnh đó, minibar nhỏ gọn với nước uống, trà, cà phê và các loại đồ ăn nhẹ giúp bạn dễ dàng thư giãn ngay trong phòng mà không cần di chuyển xa.\n\nHệ thống điều hòa không khí hiện đại giúp duy trì nhiệt độ ổn định, mang lại cảm giác dễ chịu trong mọi điều kiện thời tiết. Ngoài ra, phòng còn được trang bị TV màn hình phẳng với nhiều kênh giải trí, kết nối Wi-Fi tốc độ cao miễn phí giúp bạn luôn kết nối với công việc và người thân.\n\nPhòng tắm riêng được thiết kế sạch sẽ và tiện nghi, bao gồm vòi sen hiện đại, bồn rửa mặt, gương lớn cùng các vật dụng cá nhân cần thiết như khăn tắm, khăn mặt, dầu gội, sữa tắm và giấy vệ sinh. Không gian phòng tắm được vệ sinh thường xuyên, đảm bảo luôn khô ráo và thoáng mát.\n\nNgoài ra, phòng còn có các tiện ích bổ sung như:\n\nTủ quần áo rộng rãi, móc treo tiện lợi\nKét an toàn để bảo quản tài sản cá nhân\nĐiện thoại nội bộ hỗ trợ liên lạc nhanh chóng với lễ tân\nDịch vụ dọn phòng hàng ngày\nHỗ trợ giặt ủi (có thể tính phí)\n\nVới vị trí thuận lợi trong khuôn viên khách sạn, phòng Standard Single mang đến sự thuận tiện trong việc di chuyển đến các khu vực như nhà hàng, quầy bar, hồ bơi hoặc khu vực lễ tân. Đây là lựa chọn lý tưởng cho những ai đang tìm kiếm một không gian nghỉ ngơi riêng tư, tiện nghi với mức chi phí hợp lý.\n\nCó hồ bơi ngoài trời, trung tâm thể dục, nhà hàng và quầy bar ở TP. Hồ Chí Minh. Khách sạn 5 sao này có dịch vụ tiền sảnh và bàn bán tour. Chỗ nghỉ cung cấp lễ tân 24/24, dịch vụ đưa đón sân bay, dịch vụ phòng và Wi-Fi miễn phí ở toàn bộ chỗ nghỉ.\n\nKhách sạn sẽ cung cấp cho khách các phòng có điều hòa, bàn làm việc, ấm đun nước, minibar, két an toàn, TV màn hình phẳng và phòng tắm riêng với vòi xịt/chậu rửa vệ sinh. Tại Gđây tất cả các phòng đều có ga trải giường và khăn tắm.\n\nChỗ nghỉ có phục vụ bữa sáng, gồm các lựa chọn thực đơn buffet, kiểu lục địa và kiểu Mỹ.\n\nDù bạn đang đi công tác hay du lịch một mình, chắc chắn sẽ mang đến cho bạn trải nghiệm lưu trú thoải mái, tiện nghi và đáng nhớ.\n</p>",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 2,
+    "Name": "Standard Double",
+    "BasePrice": {
+      "$numberDecimal": "500000.00"
+    },
+    "CapacityAdults": 2,
+    "CapacityChildren": 1,
+    "Size": {
+      "$numberDecimal": "300.00"
+    },
+    "BedType": "Đôi",
+    "Description": "Phòng tiêu chuẩn 1 giường đôi",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 3,
+    "Name": "Superior City View",
+    "BasePrice": {
+      "$numberDecimal": "700000.00"
+    },
+    "CapacityAdults": 2,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "500.00"
+    },
+    "BedType": "Đôi",
+    "Description": "Phòng cao cấp hướng phố",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 4,
+    "Name": "Deluxe Ocean View",
+    "BasePrice": {
+      "$numberDecimal": "900000.00"
+    },
+    "CapacityAdults": 2,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "500.00"
+    },
+    "BedType": "Đôi",
+    "Description": "Phòng Deluxe hướng biển",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 5,
+    "Name": "Premium Deluxe",
+    "BasePrice": {
+      "$numberDecimal": "1200000.00"
+    },
+    "CapacityAdults": 2,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "450.00"
+    },
+    "BedType": "Đơn",
+    "Description": "Phòng Premium tiện nghi cao cấp",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 6,
+    "Name": "Family Suite",
+    "BasePrice": {
+      "$numberDecimal": "1500000.00"
+    },
+    "CapacityAdults": 4,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "400.00"
+    },
+    "BedType": "Đôi",
+    "Description": "Phòng Suite cho gia đình",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 7,
+    "Name": "Junior Suite",
+    "BasePrice": {
+      "$numberDecimal": "1800000.00"
+    },
+    "CapacityAdults": 2,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "300.00"
+    },
+    "BedType": "Đôi",
+    "Description": "Phòng Suite nhỏ nhắn sang trọng",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 8,
+    "Name": "Executive Suite",
+    "BasePrice": {
+      "$numberDecimal": "2500000.00"
+    },
+    "CapacityAdults": 2,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "500.00"
+    },
+    "BedType": "Đơn",
+    "Description": "Phòng Suite cho doanh nhân",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 9,
+    "Name": "Presidential Suite",
+    "BasePrice": {
+      "$numberDecimal": "5000000.00"
+    },
+    "CapacityAdults": 4,
+    "CapacityChildren": 2,
+    "Size": {
+      "$numberDecimal": "600.00"
+    },
+    "BedType": "Bự",
+    "Description": "Phòng Tổng thống",
+    "IsDeleted": false,
+    "DeletedAt": null
+  },
+  {
+    "_id": 10,
+    "Name": "Royal Villa",
+    "BasePrice": {
+      "$numberDecimal": "8000000.00"
+    },
+    "CapacityAdults": 6,
+    "CapacityChildren": 4,
+    "Size": {
+      "$numberDecimal": "1000.00"
+    },
+    "BedType": "Biệt thự",
+    "Description": "Biệt thự hoàng gia nguyên căn",
+    "IsDeleted": false,
+    "DeletedAt": null
+  }
+]

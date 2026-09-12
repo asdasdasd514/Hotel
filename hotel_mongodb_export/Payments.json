@@ -1,0 +1,964 @@
+[
+  {
+    "_id": 3,
+    "InvoiceId": 3,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2040000.00"
+    },
+    "TransactionCode": "PAY-3-20260422085847",
+    "PaymentDate": {
+      "$date": "2026-04-22T08:58:47.7527297"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 4,
+    "InvoiceId": 4,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-4-20260422091641",
+    "PaymentDate": {
+      "$date": "2026-04-22T09:16:41.5598425"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 5,
+    "InvoiceId": 5,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-5-20260422092738",
+    "PaymentDate": {
+      "$date": "2026-04-22T09:27:38.5580803"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 6,
+    "InvoiceId": 6,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-6-20260422095456",
+    "PaymentDate": {
+      "$date": "2026-04-22T09:54:56.3764475"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 7,
+    "InvoiceId": 7,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-7-20260422134015",
+    "PaymentDate": {
+      "$date": "2026-04-22T13:40:15.5142490"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 8,
+    "InvoiceId": 8,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1050000.00"
+    },
+    "TransactionCode": "PAY-8-20260424045241",
+    "PaymentDate": {
+      "$date": "2026-04-24T04:52:41.9048806"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 9,
+    "InvoiceId": 12,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-12-20260424133335",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:33:35.9567596"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 10,
+    "InvoiceId": 11,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2050000.00"
+    },
+    "TransactionCode": "PAY-11-20260424133338",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:33:38.7806498"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 11,
+    "InvoiceId": 10,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-10-20260424133341",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:33:41.5599926"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 12,
+    "InvoiceId": 9,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-9-20260424133343",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:33:43.6376661"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 13,
+    "InvoiceId": 13,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-13-20260424134516",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:45:16.4694105"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 14,
+    "InvoiceId": 14,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1800000.00"
+    },
+    "TransactionCode": "PAY-14-20260424134932",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:49:32.0015891"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 15,
+    "InvoiceId": 15,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "700000.00"
+    },
+    "TransactionCode": "PAY-15-20260424135612",
+    "PaymentDate": {
+      "$date": "2026-04-24T13:56:12.4097118"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 16,
+    "InvoiceId": 16,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-16-20260424141222",
+    "PaymentDate": {
+      "$date": "2026-04-24T14:12:22.0831015"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 17,
+    "InvoiceId": 17,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1200000.00"
+    },
+    "TransactionCode": "PAY-17-20260424141251",
+    "PaymentDate": {
+      "$date": "2026-04-24T14:12:51.3155373"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 18,
+    "InvoiceId": 18,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1000000.00"
+    },
+    "TransactionCode": "PAY-18-20260424165614",
+    "PaymentDate": {
+      "$date": "2026-04-24T16:56:14.0768894"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 19,
+    "InvoiceId": 19,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-19-20260513042226",
+    "PaymentDate": {
+      "$date": "2026-05-13T04:22:26.5339879"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 20,
+    "InvoiceId": 20,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "17100000.00"
+    },
+    "TransactionCode": "PAY-20-20260513042251",
+    "PaymentDate": {
+      "$date": "2026-05-13T04:22:51.6507639"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 21,
+    "InvoiceId": 21,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-21-20260513045129",
+    "PaymentDate": {
+      "$date": "2026-05-13T04:51:29.5734404"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 22,
+    "InvoiceId": 22,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-22-20260513045627",
+    "PaymentDate": {
+      "$date": "2026-05-13T04:56:27.5397200"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 23,
+    "InvoiceId": 23,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-23-20260514054909",
+    "PaymentDate": {
+      "$date": "2026-05-14T05:49:09.4526234"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 24,
+    "InvoiceId": 24,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "7564000.00"
+    },
+    "TransactionCode": "PAY-24-20260514063304",
+    "PaymentDate": {
+      "$date": "2026-05-14T06:33:04.9827169"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 25,
+    "InvoiceId": 26,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-26-20260514104622",
+    "PaymentDate": {
+      "$date": "2026-05-14T10:46:22.1281763"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 26,
+    "InvoiceId": 25,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "900000.00"
+    },
+    "TransactionCode": "PAY-25-20260514104625",
+    "PaymentDate": {
+      "$date": "2026-05-14T10:46:25.1690353"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 27,
+    "InvoiceId": 28,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1800000.00"
+    },
+    "TransactionCode": "PAY-28-20260515170722",
+    "PaymentDate": {
+      "$date": "2026-05-15T17:07:22.7194954"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 28,
+    "InvoiceId": 29,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-29-20260515170824",
+    "PaymentDate": {
+      "$date": "2026-05-15T17:08:24.0314949"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 29,
+    "InvoiceId": 30,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2150000.00"
+    },
+    "TransactionCode": "PAY-30-20260515170852",
+    "PaymentDate": {
+      "$date": "2026-05-15T17:08:52.4402728"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 30,
+    "InvoiceId": 31,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "PAY-31-20260515171126",
+    "PaymentDate": {
+      "$date": "2026-05-15T17:11:26.3421443"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 31,
+    "InvoiceId": 32,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2570000.00"
+    },
+    "TransactionCode": "PAY-32-20260515171654",
+    "PaymentDate": {
+      "$date": "2026-05-15T17:16:54.3563761"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 32,
+    "InvoiceId": 35,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2800000.00"
+    },
+    "TransactionCode": "PAY-35-20260517095825",
+    "PaymentDate": {
+      "$date": "2026-05-17T09:58:25.6799116"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 33,
+    "InvoiceId": 34,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "800000.00"
+    },
+    "TransactionCode": "PAY-34-20260517095829",
+    "PaymentDate": {
+      "$date": "2026-05-17T09:58:29.4547776"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 34,
+    "InvoiceId": 33,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1800000.00"
+    },
+    "TransactionCode": "PAY-33-20260517095832",
+    "PaymentDate": {
+      "$date": "2026-05-17T09:58:32.6553833"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 35,
+    "InvoiceId": 36,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "112800.00"
+    },
+    "TransactionCode": "TEST-223587",
+    "PaymentDate": {
+      "$date": "2026-05-17T10:28:41.2828136"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 36,
+    "InvoiceId": 37,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "880000.00"
+    },
+    "TransactionCode": "TEST-24399",
+    "PaymentDate": {
+      "$date": "2026-05-17T10:57:30.2133254"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 37,
+    "InvoiceId": 38,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "350000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-17T14:15:28.9079160"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 38,
+    "InvoiceId": 39,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "887200.00"
+    },
+    "TransactionCode": "PAY-39-20260517145415",
+    "PaymentDate": {
+      "$date": "2026-05-17T14:54:15.9598884"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 39,
+    "InvoiceId": 41,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "263200.00"
+    },
+    "TransactionCode": "TEST-26034",
+    "PaymentDate": {
+      "$date": "2026-05-17T16:03:49.2749059"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 40,
+    "InvoiceId": 42,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "200000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-17T16:04:24.5413293"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 41,
+    "InvoiceId": 43,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "614800.00"
+    },
+    "TransactionCode": "PAY-43-20260517160829",
+    "PaymentDate": {
+      "$date": "2026-05-17T16:08:29.9697190"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 42,
+    "InvoiceId": 44,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "376000.00"
+    },
+    "TransactionCode": "PAY-44-20260518013824",
+    "PaymentDate": {
+      "$date": "2026-05-18T01:38:24.3103617"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 43,
+    "InvoiceId": 45,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "800000.00"
+    },
+    "TransactionCode": "PAY-45-20260518013833",
+    "PaymentDate": {
+      "$date": "2026-05-18T01:38:33.4984733"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 44,
+    "InvoiceId": 40,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "620000.00"
+    },
+    "TransactionCode": "PAY-40-20260518014022",
+    "PaymentDate": {
+      "$date": "2026-05-18T01:40:22.5413110"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 45,
+    "InvoiceId": 46,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2589000.00"
+    },
+    "TransactionCode": "TEST-314671",
+    "PaymentDate": {
+      "$date": "2026-05-18T05:25:23.0091671"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 46,
+    "InvoiceId": 47,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "350000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-18T05:27:31.3755385"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 47,
+    "InvoiceId": 48,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "0.00"
+    },
+    "TransactionCode": "PAY-48-20260518052853",
+    "PaymentDate": {
+      "$date": "2026-05-18T05:28:53.3713539"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 48,
+    "InvoiceId": 49,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "6471000.00"
+    },
+    "TransactionCode": "PAY-49-20260518052901",
+    "PaymentDate": {
+      "$date": "2026-05-18T05:29:01.7129097"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 49,
+    "InvoiceId": 50,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "400000.00"
+    },
+    "TransactionCode": "TEST-78812",
+    "PaymentDate": {
+      "$date": "2026-05-18T05:48:26.4737585"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 50,
+    "InvoiceId": 51,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "238000.00"
+    },
+    "TransactionCode": "TEST-109258",
+    "PaymentDate": {
+      "$date": "2026-05-18T08:07:14.0669314"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 51,
+    "InvoiceId": 52,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "200000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-18T08:20:23.3629607"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 52,
+    "InvoiceId": 53,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1388000.00"
+    },
+    "TransactionCode": "PAY-53-20260518082226",
+    "PaymentDate": {
+      "$date": "2026-05-18T08:22:26.2639356"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 53,
+    "InvoiceId": 54,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1144000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-19T01:39:42.7170444"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 54,
+    "InvoiceId": 55,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1728000.00"
+    },
+    "TransactionCode": "TEST-304945",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:06:00.2603067"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 55,
+    "InvoiceId": 56,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "0.00"
+    },
+    "TransactionCode": "PAY-56-20260519020740",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:07:40.5302544"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 56,
+    "InvoiceId": 57,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "360000.00"
+    },
+    "TransactionCode": "TEST-172410",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:09:59.9637154"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 57,
+    "InvoiceId": 58,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "540000.00"
+    },
+    "TransactionCode": "PAY-58-20260519022247",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:22:47.0257586"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 58,
+    "InvoiceId": 59,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "270000.00"
+    },
+    "TransactionCode": "TEST-776570",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:26:48.8647307"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 59,
+    "InvoiceId": 60,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "630000.00"
+    },
+    "TransactionCode": "PAY-60-20260519022915",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:29:15.1104556"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 60,
+    "InvoiceId": 61,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "120000.00"
+    },
+    "TransactionCode": "TEST-416439",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:29:57.5075793"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 61,
+    "InvoiceId": 62,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "280000.00"
+    },
+    "TransactionCode": "PAY-62-20260519023021",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:30:21.7906657"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 62,
+    "InvoiceId": 63,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "200000.00"
+    },
+    "TransactionCode": "TEST-842864",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:45:16.0539755"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 63,
+    "InvoiceId": 64,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "500000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-19T02:47:15.7429356"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 64,
+    "InvoiceId": 65,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "537000.00"
+    },
+    "TransactionCode": "PAY-65-20260519024812",
+    "PaymentDate": {
+      "$date": "2026-05-19T02:48:12.0480333"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 65,
+    "InvoiceId": 66,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "633600.00"
+    },
+    "TransactionCode": "TEST-579745",
+    "PaymentDate": {
+      "$date": "2026-05-19T03:14:42.7317362"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 66,
+    "InvoiceId": 67,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "201600.00"
+    },
+    "TransactionCode": "TEST-819984",
+    "PaymentDate": {
+      "$date": "2026-05-19T03:15:26.9029411"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 67,
+    "InvoiceId": 68,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "201600.00"
+    },
+    "TransactionCode": "TEST-862131",
+    "PaymentDate": {
+      "$date": "2026-05-19T03:20:39.8679076"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 68,
+    "InvoiceId": 69,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "464000.00"
+    },
+    "TransactionCode": null,
+    "PaymentDate": {
+      "$date": "2026-05-19T04:28:12.6360163"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 70,
+    "InvoiceId": 71,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "160000.00"
+    },
+    "TransactionCode": "TEST-1803",
+    "PaymentDate": {
+      "$date": "2026-05-19T08:49:45.6919772"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 71,
+    "InvoiceId": 72,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "160000.00"
+    },
+    "TransactionCode": "PAY-72-20260519085347",
+    "PaymentDate": {
+      "$date": "2026-05-19T08:53:47.9366567"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 72,
+    "InvoiceId": 73,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "160000.00"
+    },
+    "TransactionCode": "TEST-862848",
+    "PaymentDate": {
+      "$date": "2026-05-19T09:05:38.4308134"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 73,
+    "InvoiceId": 74,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "160000.00"
+    },
+    "TransactionCode": "PAY-74-20260519091109",
+    "PaymentDate": {
+      "$date": "2026-05-19T09:11:09.6289292"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 74,
+    "InvoiceId": 75,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "2534400.00"
+    },
+    "TransactionCode": "PAY-75-20260520040131",
+    "PaymentDate": {
+      "$date": "2026-05-20T04:01:31.6808966"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 75,
+    "InvoiceId": 76,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1142400.00"
+    },
+    "TransactionCode": "PAY-76-20260520040141",
+    "PaymentDate": {
+      "$date": "2026-05-20T04:01:41.2297828"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 76,
+    "InvoiceId": 77,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1050000.00"
+    },
+    "TransactionCode": "PAY-77-20260520040209",
+    "PaymentDate": {
+      "$date": "2026-05-20T04:02:09.3117359"
+    },
+    "Status": "Completed"
+  },
+  {
+    "_id": 77,
+    "InvoiceId": 78,
+    "PaymentMethodId": null,
+    "AmountPaid": {
+      "$numberDecimal": "1114400.00"
+    },
+    "TransactionCode": "PAY-78-20260520040237",
+    "PaymentDate": {
+      "$date": "2026-05-20T04:02:37.3064329"
+    },
+    "Status": "Completed"
+  }
+]
