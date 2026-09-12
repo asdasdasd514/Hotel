@@ -399,7 +399,7 @@ const BookingPage = () => {
   const handleTestWebhook = async () => {
     if (!createdBooking) return;
     try {
-      const response = await fetch("http://localhost:5291/api/payment/sepay", {
+      const response = await fetch(`${API_BASE_URL}/payment/sepay`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
