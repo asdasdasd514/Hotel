@@ -51,6 +51,10 @@ const FeaturedHotels = () => {
                 src={hotel.image}
                 alt={hotel.name}
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80";
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <button className="absolute right-4 top-4 rounded-2xl bg-white/20 p-2.5 text-white backdrop-blur-md transition hover:bg-rose-500 hover:text-white">

@@ -369,9 +369,13 @@ const HomePage = () => {
 
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={rt.primaryImageUrl || "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"}
+                    src={rt.primaryImageUrl || "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"}
                     alt={rt.name}
                     className="h-full w-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80";
+                    }}
                   />
                   <div className="absolute right-3 top-3">
                     <button className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm backdrop-blur-sm transition hover:bg-white">
