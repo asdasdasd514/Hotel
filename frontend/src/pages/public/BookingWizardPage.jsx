@@ -10,6 +10,7 @@ import { getMyProfile } from "../../api/admin/profileApi";
 import { getMemberships } from "../../api/admin/membershipApi";
 import { getStoredAuth } from "../../utils/authStorage";
 import { getBookingTotalAmount, getBookingDetailNights } from "../../utils/bookingPricing";
+import { API_BASE_URL } from "../../api/client";
 
 const DEFAULT_CHECK_IN_HOUR = 14;
 const DEFAULT_CHECK_OUT_HOUR = 12;
