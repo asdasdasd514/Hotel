@@ -42,18 +42,34 @@ const BookingCard = ({ roomType, availableCount = 0, numberOfNights, detailLinkS
               src={imageUrl} 
               alt={roomType.roomTypeName} 
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
             />
           </div>
           
           <div className="grid grid-cols-3 gap-2">
             <div className="aspect-[4/3] overflow-hidden rounded-lg bg-slate-100">
-              <img src={roomType.imageUrls?.[1] || imageUrl} className="h-full w-full object-cover" alt="" />
+              <img 
+                src={roomType.imageUrls?.[1] || imageUrl} 
+                className="h-full w-full object-cover" 
+                alt="" 
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
+              />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-lg bg-slate-100">
-              <img src={roomType.imageUrls?.[2] || imageUrl} className="h-full w-full object-cover" alt="" />
+              <img 
+                src={roomType.imageUrls?.[2] || imageUrl} 
+                className="h-full w-full object-cover" 
+                alt="" 
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
+              />
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-slate-100">
-              <img src={roomType.imageUrls?.[3] || imageUrl} className="h-full w-full object-cover" alt="" />
+              <img 
+                src={roomType.imageUrls?.[3] || imageUrl} 
+                className="h-full w-full object-cover" 
+                alt="" 
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = fallbackImage; }}
+              />
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-sm font-bold text-white">
                 +12
               </div>

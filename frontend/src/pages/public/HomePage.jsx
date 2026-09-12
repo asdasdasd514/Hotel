@@ -129,7 +129,7 @@ const HomePage = () => {
   const handleSaveVoucher = async (e, voucherId) => {
     e.stopPropagation();
     if (isVoucherSaved(voucherId)) return;
-    
+
     setSavingVoucherId(voucherId);
     try {
       await saveVoucher(voucherId);
@@ -163,14 +163,14 @@ const HomePage = () => {
             </div>
             {recentlyViewed.length > 4 && (
               <div className="flex gap-2">
-                <button 
+                <button
                   onClick={() => handleRecentScroll("left")}
                   disabled={!showRecentLeft}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft size={20} />
                 </button>
-                <button 
+                <button
                   onClick={() => handleRecentScroll("right")}
                   disabled={!showRecentRight}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -180,15 +180,15 @@ const HomePage = () => {
               </div>
             )}
           </div>
-          
+
           <div className="relative group/recent">
-            <div 
+            <div
               ref={recentCarouselRef}
               className="no-scrollbar flex gap-4 overflow-x-auto no-scrollbar pb-4 scroll-smooth"
             >
               {recentlyViewed.map((rt) => (
-                <article 
-                  key={rt.id} 
+                <article
+                  key={rt.id}
                   onClick={() => (window.location.href = `/room-types/${rt.id}`)}
                   className="min-w-[280px] w-[280px] cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:shadow-lg"
                 >
@@ -206,18 +206,18 @@ const HomePage = () => {
                         <span className="text-[12px] font-medium text-slate-500">Khách sạn</span>
                         <div className="flex gap-0.5">
                           {[...Array(5)].map((_, i) => (
-                            <Star 
-                              key={i} 
-                              size={12} 
-                              fill={i < Math.round(rt.rating || 0) ? "#fbbf24" : "none"} 
-                              className={i < Math.round(rt.rating || 0) ? "text-amber-400" : "text-slate-200"} 
+                            <Star
+                              key={i}
+                              size={12}
+                              fill={i < Math.round(rt.rating || 0) ? "#fbbf24" : "none"}
+                              className={i < Math.round(rt.rating || 0) ? "text-amber-400" : "text-slate-200"}
                             />
                           ))}
                         </div>
                       </div>
                       <h3 className="text-lg font-bold text-slate-900 line-clamp-1 leading-tight">{rt.name}</h3>
                     </div>
-                    
+
                     <div className="flex items-center gap-2">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#003b95] text-sm font-bold text-white">
                         {rt.rating > 0 ? Number(rt.rating).toFixed(1).replace('.', ',') : "0,0"}
@@ -246,7 +246,7 @@ const HomePage = () => {
       <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="text-xl font-black tracking-tight text-slate-900 uppercase sm:text-2xl">Ưu đãi cho bạn</h2>
-          <Link 
+          <Link
             to="/offers"
             className="flex items-center gap-1.5 text-sm font-black text-orange-600 transition hover:gap-2 hover:text-orange-700"
           >
@@ -258,9 +258,9 @@ const HomePage = () => {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {vouchersData?.data?.slice(0, 3).map((voucher) => {
             const isExpired = voucher.validTo && new Date(voucher.validTo) < new Date();
-            
+
             return (
-              <div 
+              <div
                 key={voucher.id}
                 onClick={() => !isExpired && setSelectedVoucher(voucher)}
                 className={`group relative flex h-full overflow-hidden rounded-2xl border border-dashed bg-white shadow-sm transition-all ${isExpired ? 'border-slate-200 cursor-not-allowed opacity-75 grayscale' : 'border-orange-200 cursor-pointer hover:shadow-md'}`}
@@ -273,12 +273,12 @@ const HomePage = () => {
                     Mã ưu đãi: <span className={isExpired ? 'text-slate-400' : 'text-slate-600'}>{voucher.code}</span>
                   </p>
                 </div>
-                
+
                 <div className={`relative flex w-32 sm:w-40 flex-col items-center justify-center border-l border-dashed p-4 sm:p-6 text-white ${isExpired ? 'border-slate-100 bg-slate-400' : 'border-orange-100 bg-orange-500'}`}>
                   {/* Ticket notches */}
                   <div className={`absolute -left-2 -top-2 size-4 rounded-full ${isExpired ? 'bg-slate-50' : 'bg-[#f8fafc]'}`} />
                   <div className={`absolute -left-2 -bottom-2 size-4 rounded-full ${isExpired ? 'bg-slate-50' : 'bg-[#f8fafc]'}`} />
-                  
+
                   <div className="text-center w-full">
                     <div className="flex flex-col items-center justify-center min-h-[48px]">
                       <p className="text-base sm:text-lg font-black uppercase tracking-tight leading-none text-balance">
@@ -289,16 +289,15 @@ const HomePage = () => {
                       {voucher.minBookingValue ? `Đơn tối thiểu: ${voucher.minBookingValue.toLocaleString()} VND` : "Không cần đơn tối thiểu"}
                     </p>
                   </div>
-                  
+
                   {!isExpired ? (
-                    <button 
+                    <button
                       onClick={(e) => handleSaveVoucher(e, voucher.id)}
                       disabled={isVoucherSaved(voucher.id) || savingVoucherId === voucher.id}
-                      className={`mt-4 w-full rounded-full py-2 text-xs font-black shadow-sm transition active:scale-95 ${
-                        isVoucherSaved(voucher.id) 
-                          ? 'bg-orange-100/20 text-white cursor-default' 
+                      className={`mt-4 w-full rounded-full py-2 text-xs font-black shadow-sm transition active:scale-95 ${isVoucherSaved(voucher.id)
+                          ? 'bg-orange-100/20 text-white cursor-default'
                           : 'bg-white text-orange-600 hover:bg-orange-50'
-                      }`}
+                        }`}
                     >
                       {savingVoucherId === voucher.id ? "Đang lưu..." : isVoucherSaved(voucher.id) ? "Đã lưu" : "Lưu mã"}
                     </button>
@@ -315,9 +314,9 @@ const HomePage = () => {
       </section>
 
       {selectedVoucher && (
-        <VoucherViewModal 
-          voucher={selectedVoucher} 
-          onClose={() => setSelectedVoucher(null)} 
+        <VoucherViewModal
+          voucher={selectedVoucher}
+          onClose={() => setSelectedVoucher(null)}
         />
       )}
 
@@ -329,11 +328,11 @@ const HomePage = () => {
             Từ biệt thự, lâu đài cho đến nhà thuyền, igloo, chúng tôi đều có hết
           </p>
         </div>
-        
+
         <div className="relative group/carousel">
           {/* Side Buttons */}
           {showLeftBtn && (
-            <button 
+            <button
               onClick={() => handleScroll("left")}
               className="absolute left-0 top-[calc(50%-8px)] z-20 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition hover:bg-slate-50 active:scale-95"
               aria-label="Previous"
@@ -343,7 +342,7 @@ const HomePage = () => {
           )}
 
           {showRightBtn && (
-            <button 
+            <button
               onClick={() => handleScroll("right")}
               className="absolute right-0 top-[calc(50%-8px)] z-20 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition hover:bg-slate-50 active:scale-95"
               aria-label="Next"
@@ -355,31 +354,27 @@ const HomePage = () => {
 
 
 
-          <div 
+          <div
             ref={carouselRef}
             id="property-carousel"
             className="no-scrollbar flex gap-4 overflow-x-auto no-scrollbar pb-4 scroll-smooth"
           >
             {roomTypesData?.items?.map((rt) => (
-              <article 
-                key={rt.id} 
+              <article
+                key={rt.id}
                 onClick={() => (window.location.href = `/room-types/${rt.id}`)}
                 className="min-w-[calc((100%-48px)/1)] sm:min-w-[calc((100%-48px)/2)] lg:min-w-[calc((100%-48px)/4)] cursor-pointer overflow-hidden rounded-xl border border-slate-200 bg-white transition-all hover:shadow-md"
               >
 
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={rt.primaryImageUrl || "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"}
+                    src={rt.primaryImageUrl || "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"}
                     alt={rt.name}
                     className="h-full w-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80";
-                    }}
                   />
                   <div className="absolute right-3 top-3">
                     <button className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm backdrop-blur-sm transition hover:bg-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
                     </button>
                   </div>
                 </div>
@@ -393,7 +388,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <h3 className="text-base font-bold text-slate-900 line-clamp-1">{rt.name}</h3>
-                  
+
                   <div className="mt-3 flex items-center gap-2">
                     <div className="flex h-8 w-8 items-center justify-center rounded bg-[#003b95] text-sm font-bold text-white">
                       {rt.rating ? Number(rt.rating).toFixed(1) : "0.0"}
@@ -427,7 +422,7 @@ const HomePage = () => {
             <h2 className="text-2xl font-black tracking-tight text-slate-900 uppercase sm:text-3xl">Bài viết gần đây</h2>
             <p className="mt-2 font-medium text-slate-500">Cập nhật những xu hướng và kinh nghiệm du lịch mới nhất.</p>
           </div>
-          <Link 
+          <Link
             to="/articles"
             className="hidden sm:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-black text-slate-900 shadow-sm transition hover:bg-slate-50 active:scale-95"
           >
@@ -438,16 +433,16 @@ const HomePage = () => {
 
         {isLoadingArticles ? (
           <div className="grid gap-8 md:grid-cols-3">
-             {[1, 2, 3].map(i => <div key={i} className="h-80 animate-pulse rounded-[2.5rem] bg-slate-100" />)}
+            {[1, 2, 3].map(i => <div key={i} className="h-80 animate-pulse rounded-[2.5rem] bg-slate-100" />)}
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-3">
             {articlesData?.slice(0, 3)?.map((article) => (
               <article key={article.id} className="group flex flex-col overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white transition-all hover:shadow-xl">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img 
-                    src={article.thumbnailUrl || "https://images.unsplash.com/photo-1506012733851-bb3f3e2c3d10?auto=format&fit=crop&w=800&q=80"} 
-                    alt={article.title} 
+                  <img
+                    src={article.thumbnailUrl || "https://images.unsplash.com/photo-1506012733851-bb3f3e2c3d10?auto=format&fit=crop&w=800&q=80"}
+                    alt={article.title}
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   />
                   <div className="absolute left-6 top-6">
@@ -463,7 +458,7 @@ const HomePage = () => {
                   <p className="mt-4 text-sm font-medium leading-relaxed text-slate-500 line-clamp-3">
                     {article.summary}
                   </p>
-                  <Link 
+                  <Link
                     to={`/articles/${article.slug}`}
                     className="mt-8 flex items-center gap-2 text-sm font-black text-[#1F649C]"
                   >
@@ -474,15 +469,15 @@ const HomePage = () => {
             ))}
           </div>
         )}
-        
+
         <div className="mt-12 flex sm:hidden justify-center">
-            <Link 
-                to="/articles"
-                className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-black text-slate-900 shadow-sm transition hover:bg-slate-50 active:scale-95"
-            >
-                Xem tất cả bài viết
-                <ArrowRight size={16} className="text-[#1F649C]" />
-            </Link>
+          <Link
+            to="/articles"
+            className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-black text-slate-900 shadow-sm transition hover:bg-slate-50 active:scale-95"
+          >
+            Xem tất cả bài viết
+            <ArrowRight size={16} className="text-[#1F649C]" />
+          </Link>
         </div>
       </section>
 

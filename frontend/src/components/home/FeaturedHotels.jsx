@@ -51,23 +51,19 @@ const FeaturedHotels = () => {
                 src={hotel.image}
                 alt={hotel.name}
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80";
-                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <button className="absolute right-4 top-4 rounded-2xl bg-white/20 p-2.5 text-white backdrop-blur-md transition hover:bg-rose-500 hover:text-white">
                 <Heart size={20} />
               </button>
               <div className="absolute bottom-4 left-4">
-                 <div className="flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-black text-slate-900">
-                    <Star size={12} fill="currentColor" />
-                    Bestseller
-                 </div>
+                <div className="flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-black text-slate-900">
+                  <Star size={12} fill="currentColor" />
+                  Bestseller
+                </div>
               </div>
             </div>
-            
+
             <div className="p-6">
               <div className="flex items-start justify-between gap-2">
                 <div>
