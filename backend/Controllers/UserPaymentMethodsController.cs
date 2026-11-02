@@ -68,7 +68,7 @@ namespace backend.Controllers
             }
 
             method.UserId = userId.Value;
-            method.CreatedAt = DateTime.Now;
+            method.CreatedAt = DateTime.UtcNow;
 
             // If it's the first method, make it default
             var existingCount = await _context.UserPaymentMethods.CountAsync(m => m.UserId == userId.Value);

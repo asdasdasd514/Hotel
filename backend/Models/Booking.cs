@@ -12,7 +12,7 @@ namespace backend.Models
         public string BookingCode { get; set; } = null!;
         public int? VoucherId { get; set; }
         public string? Status { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public User? User { get; set; }
         public Guest? Guest { get; set; }
         public Voucher? Voucher { get; set; }

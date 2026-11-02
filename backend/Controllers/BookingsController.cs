@@ -117,7 +117,7 @@ namespace backend.Controllers
         // Tự động hủy các Pending booking đã hết thời gian giữ phòng (>10 phút)
         private async Task CancelExpiredPendingBookingsAsync()
         {
-            var cutoff = DateTime.Now.AddMinutes(-10);
+            var cutoff = DateTime.UtcNow.AddMinutes(-10);
 
             var expiredBookings = await _context.Bookings
                 .Include(b => b.BookingDetails)
@@ -379,7 +379,7 @@ namespace backend.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                var holdCutoff = DateTime.Now.AddMinutes(-10);
+                var holdCutoff = DateTime.UtcNow.AddMinutes(-10);
 
                 foreach (var (detailDto, roomType, detail) in detailsToCreate)
                 {
@@ -769,7 +769,7 @@ namespace backend.Controllers
             await CancelExpiredPendingBookingsAsync();
 
             var targetDate = date?.Date ?? DateTime.Today;
-            var holdCutoff = DateTime.Now.AddMinutes(-10);
+            var holdCutoff = DateTime.UtcNow.AddMinutes(-10);
 
             var query = _context.Bookings
                 .Include(b => b.Guest)

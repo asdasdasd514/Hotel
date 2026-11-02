@@ -30,7 +30,7 @@ public class NotificationService
             Type = string.IsNullOrWhiteSpace(type) ? "Info" : type.Trim(),
             ReferenceLink = string.IsNullOrWhiteSpace(referenceLink) ? null : referenceLink.Trim(),
             IsRead = false,
-            CreatedAt = DateTime.Now
+            CreatedAt = DateTime.UtcNow
         };
 
         _context.Notifications.Add(notification);

@@ -13,6 +13,9 @@ using System.Text;
 using backend.Data.Interceptors;
 using backend.Services;
 
+// Cho phép Npgsql hỗ trợ ghi DateTimeKind linh hoạt khi dùng PostgreSQL (Supabase)
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Hiển thị tiếng Việt

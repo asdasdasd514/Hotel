@@ -119,7 +119,7 @@ export const useRegister = () => {
       navigate("/");
     } catch (error) {
       const message =
-        error.response?.data?.message || "Email đã tồn tại.";
+        (error.response?.status === 409 ? "Email đã tồn tại." : (error.response?.data?.message || "Đã xảy ra lỗi khi đăng ký."));
 
       if (message === "Email đã tồn tại.") {
         setErrors((prev) => ({ ...prev, email: "Email đã tồn tại." }));

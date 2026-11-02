@@ -16,7 +16,7 @@ namespace backend.Services
             _logger = logger;
         }
 
-        public Task SendEmailAsync(string to, string subject, string htmlBody, bool isHtml = true)
+        public async Task SendEmailAsync(string to, string subject, string htmlBody, bool isHtml = true)
         {
             var smtp = _config.GetSection("Smtp");
             var host = smtp.GetValue<string>("Host");
@@ -35,14 +35,14 @@ namespace backend.Services
 
             _logger.LogInformation("Sending email via SMTP {Host}:{Port} from {From}", host, port, from ?? user);
 
-            var message = new MailMessage();
+            using var message = new MailMessage();
             message.From = new MailAddress(from ?? user ?? "no-reply@example.com", fromName ?? "Hotel");
             message.To.Add(new MailAddress(to));
             message.Subject = subject;
             message.Body = htmlBody;
             message.IsBodyHtml = isHtml;
 
-            var client = new SmtpClient(host, port);
+            using var client = new SmtpClient(host, port);
             client.EnableSsl = enableSsl;
             if (!string.IsNullOrWhiteSpace(user))
             {
@@ -52,13 +52,13 @@ namespace backend.Services
             try
             {
                 // Use async API when available
-                var sendTask = client.SendMailAsync(message);
-                return sendTask;
+                await client.SendMailAsync(message); return;
+
             }
             catch (System.MissingMethodException)
             {
                 // fallback to Task.Run if SendMailAsync not available
-                return Task.Run(() => client.Send(message));
+                await Task.Run(() => client.Send(message)); return;
             }
         }
     }

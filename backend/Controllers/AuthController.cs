@@ -178,7 +178,7 @@ namespace backend.Controllers
                 Phone = string.IsNullOrWhiteSpace(registerDto.PhoneNumber)
                     ? null
                     : registerDto.PhoneNumber.Trim(),
-                DateOfBirth = registerDto.DateOfBirth,
+                DateOfBirth = registerDto.DateOfBirth.HasValue ? DateTime.SpecifyKind(registerDto.DateOfBirth.Value, DateTimeKind.Utc) : null,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
                 Status = true
             };
@@ -196,11 +196,11 @@ namespace backend.Controllers
                     .LoadAsync();
             }
 
-            await _notificationService.CreateAsync(
+            try { await _notificationService.CreateAsync(
                 "Tài khoản mới",
                 $"{user.FullName} vừa đăng ký tài khoản mới.",
                 "Success",
-                "/admin/staff");
+                "/admin/staff"); } catch { /* Không gián đoạn đăng ký nếu gửi thông báo gặp sự cố */ }
 
             return Ok(BuildAuthResponse(user));
         }

@@ -107,7 +107,7 @@ namespace backend.Controllers
 
         private async Task CancelExpiredBookingsAsync(IEnumerable<Booking> bookings)
         {
-            var holdCutoff = DateTime.Now.AddMinutes(-10);
+            var holdCutoff = DateTime.UtcNow.AddMinutes(-10);
             var expiredBookings = bookings.Where(b => b.Status == "Pending" && b.CreatedAt <= holdCutoff).ToList();
             if (expiredBookings.Any())
             {
@@ -202,14 +202,14 @@ namespace backend.Controllers
         private static DateTime NormalizeCheckInDate(DateTime value)
         {
             return value.TimeOfDay == TimeSpan.Zero
-                ? value.Date.AddHours(14)
+                ? DateTime.SpecifyKind(value.Date.AddHours(14), DateTimeKind.Utc)
                 : value;
         }
 
         private static DateTime NormalizeCheckOutDate(DateTime value)
         {
             return value.TimeOfDay == TimeSpan.Zero
-                ? value.Date.AddHours(12)
+                ? DateTime.SpecifyKind(value.Date.AddHours(12), DateTimeKind.Utc)
                 : value;
         }
 
@@ -731,7 +731,7 @@ namespace backend.Controllers
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                var holdCutoff = DateTime.Now.AddMinutes(-10);
+                var holdCutoff = DateTime.UtcNow.AddMinutes(-10);
 
                 foreach (var (detailDto, detail) in detailsToCreate)
                 {

@@ -285,7 +285,7 @@ namespace backend.Controllers
                     {
                         ConfigName = kv.Key,
                         Value = kv.Value,
-                        UpdatedAt = DateTime.Now
+                        UpdatedAt = DateTime.UtcNow
                     });
                     changed = true;
                 }
@@ -321,14 +321,14 @@ namespace backend.Controllers
                 {
                     ConfigName = configName,
                     Value = value,
-                    UpdatedAt = DateTime.Now
+                    UpdatedAt = DateTime.UtcNow
                 };
                 _context.AuditLogSettings.Add(setting);
             }
             else
             {
                 setting.Value = value;
-                setting.UpdatedAt = DateTime.Now;
+                setting.UpdatedAt = DateTime.UtcNow;
             }
         }
     }

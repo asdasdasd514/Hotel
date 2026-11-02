@@ -169,6 +169,11 @@ namespace backend.Controllers
             //    return BadRequest(validation.Errors);
             //}
 
+            if (dto.BasePrice <= 0)
+            {
+                return BadRequest(new { message = "Giá cơ bản của loại phòng phải lớn hơn 0." });
+            }
+
             var roomType = new RoomType
             {
                 Name = dto.Name.Trim(),
@@ -238,6 +243,7 @@ namespace backend.Controllers
 
             if (!string.IsNullOrWhiteSpace(dto.Name))
                 roomType.Name = dto.Name.Trim();
+            if (dto.BasePrice.HasValue && dto.BasePrice.Value <= 0) return BadRequest(new { message = "Giá cơ bản của loại phòng phải lớn hơn 0." });
             if (dto.BasePrice.HasValue)
                 roomType.BasePrice = dto.BasePrice.Value;
             if (dto.CapacityAdults.HasValue)
